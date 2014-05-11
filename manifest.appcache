@@ -1,13 +1,13 @@
 CACHE MANIFEST
-# Revision 1399804664708
+# Revision 1399809662239
 
 CACHE:
 index.html
 appendices/appendix.html
 contents/authors.html
 contents/dev_env.html
-contents/git.html
 contents/environments.html
+contents/git.html
 contents/pro_env.html
 contents/railsinstall.html
 contents/rbenv.html
@@ -61,8 +61,8 @@ gitbook/jsrepl/sandbox.html
 gitbook/jsrepl/sandbox.js
 gitbook/print.css
 gitbook/style.css
-gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
+gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 
 NETWORK:
 *
