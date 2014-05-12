@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1399857972187
+# Revision 1399861283224
 
 CACHE:
 appendices/appendix.html
@@ -15,9 +15,9 @@ contents/rubyonrails_intro.html
 contents/walkthrough/posts_CRUD.html
 contents/walkthrough/bulletin.html
 contents/walkthrough/first_model.html
+contents/walkthrough/gemfile.html
 contents/walkthrough/layout.html
 contents/walkthrough/model_association.html
-contents/walkthrough/gemfile.html
 contents/walkthrough/bulletin_type.html
 contents/walkthrough/posts_controller_modified.html
 contents/walkthrough/posts_view_file.html
@@ -62,6 +62,7 @@ gitbook/jsrepl/sandbox.js
 gitbook/print.css
 gitbook/style.css
 gitbook/plugins/gitbook-plugin-disqus/plugin.js
+gitbook/plugins/gitbook-plugin-ga/plugin.js
 gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 

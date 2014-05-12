@@ -1,8 +1,11 @@
 {
-    "plugins": ["disqus"],
-    "pluginsConfig": {
-        "disqus": {
-            "shortName": "railsguideline"
-        }
+  "plugins": ["disqus", "ga"],
+  "pluginsConfig": {
+    "disqus": {
+        "shortName": "railsguideline"
+    },
+    "ga": {
+        "token": "85927241"
     }
+  }
 }
