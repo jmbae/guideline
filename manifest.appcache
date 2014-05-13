@@ -1,18 +1,18 @@
 CACHE MANIFEST
-# Revision 1399947258864
+# Revision 1399950153089
 
 CACHE:
 appendices/appendix.html
-appendices/screencasts.html
 appendices/books.html
+appendices/screencasts.html
 index.html
 contents/pro_env.html
 contents/authors.html
 contents/editors.html
 contents/environments.html
 contents/git.html
-contents/railsinstall.html
 contents/dev_env.html
+contents/railsinstall.html
 contents/rbenv.html
 contents/rubyonrails_intro.html
 contents/rvm.html
@@ -67,8 +67,8 @@ gitbook/print.css
 gitbook/style.css
 gitbook/plugins/gitbook-plugin-disqus/plugin.js
 gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
-gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-ga/plugin.js
+gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 
 NETWORK:
 *
