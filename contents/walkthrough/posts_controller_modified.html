@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="4.9" data-basepath="../.." data-revision="1400032799807">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="4.9" data-basepath="../.." data-revision="1400033346755">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -446,34 +446,36 @@
 <h2 id="-">중첩 라우팅</h2>
 <p>RESTful URI로부터 <code>bulletin_id</code> 또는 <code>post</code>의 <code>id</code> 값을 받아 해당 <code>bulletin</code> 객체를 생성하거나 이 <code>bulletin</code> 객체의 <code>posts</code> 개체를 불러오기 위해서는 <code>중첩 라우팅</code>(nested routing) 기법을 사용하면 편리하다.</p>
 <p><code>config/routes.rb</code> 파일을 열어 아래와 같이 수정한다.</p>
-<pre><code>Rails.application.routes.draw do
-  resources :bulletins do
-    resources :posts
-  end
+<pre><code class="lang-ruby"><span class="hljs-constant">Rails</span>.application.routes.draw <span class="hljs-keyword">do</span>
+  resources <span class="hljs-symbol">:bulletins</span> <span class="hljs-keyword">do</span>
+    resources <span class="hljs-symbol">:posts</span>
+  <span class="hljs-keyword">end</span>
 
-  root &#39;welcome#index&#39;
-end
-</code></pre><p>위와 같이 리소스 라우트를 중첩하면 아래와 같은 라우팅을 사용할 수 있게 된다. 이것을 콘솔에서 확인해 보자.</p>
-<pre><code>$ bin/rake routes
-            Prefix Verb   URI Pattern                                      Controller#Action
-    bulletin_posts GET    /bulletins/:bulletin_id/posts(.:format)          posts#index
-                   POST   /bulletins/:bulletin_id/posts(.:format)          posts#create
- new_bulletin_post GET    /bulletins/:bulletin_id/posts/new(.:format)      posts#new
-edit_bulletin_post GET    /bulletins/:bulletin_id/posts/:id/edit(.:format) posts#edit
-     bulletin_post GET    /bulletins/:bulletin_id/posts/:id(.:format)      posts#show
-                   PATCH  /bulletins/:bulletin_id/posts/:id(.:format)      posts#update
-                   PUT    /bulletins/:bulletin_id/posts/:id(.:format)      posts#update
-                   DELETE /bulletins/:bulletin_id/posts/:id(.:format)      posts#destroy
-         bulletins GET    /bulletins(.:format)                             bulletins#index
-                   POST   /bulletins(.:format)                             bulletins#create
-      new_bulletin GET    /bulletins/new(.:format)                         bulletins#new
-     edit_bulletin GET    /bulletins/:id/edit(.:format)                    bulletins#edit
-          bulletin GET    /bulletins/:id(.:format)                         bulletins#show
-                   PATCH  /bulletins/:id(.:format)                         bulletins#update
-                   PUT    /bulletins/:id(.:format)                         bulletins#update
-                   DELETE /bulletins/:id(.:format)                         bulletins#destroy
-              root GET    /                                                welcome#index
-</code></pre><p>위와 같은 라우팅 테이블에서 <code>URI Pattern</code>을 주목하자. 외부로부터 들어오는 요청이 이 테이블의 <code>URI Pattern</code>과 일치할 경우 매핑되는 컨트롤러의 액션이 호출된다. 이 때 <code>URI Pattern</code> 중 심볼에 매칭되는 부분은 <code>params[]</code> 해쉬의 키로 사용되어 해당 파라미터의 값을 불러올 수 있게 된다. 위의 예에서는 <code>params[:bulletin_id]</code> 키에 해당하는 파라미터 값을 불러와 액션에서 사용할 수 있게 된다.</p>
+  root <span class="hljs-string">'welcome#index'</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>위와 같이 리소스 라우트를 중첩하면 아래와 같은 라우팅을 사용할 수 있게 된다. 이것을 콘솔에서 확인해 보자.</p>
+<pre><code class="lang-bash">$ bin/rake routes
+            Prefix Verb   URI Pattern                                      Controller<span class="hljs-comment">#Action</span>
+    bulletin_posts GET    /bulletins/:bulletin_id/posts(.:format)          posts<span class="hljs-comment">#index</span>
+                   POST   /bulletins/:bulletin_id/posts(.:format)          posts<span class="hljs-comment">#create</span>
+ new_bulletin_post GET    /bulletins/:bulletin_id/posts/new(.:format)      posts<span class="hljs-comment">#new</span>
+edit_bulletin_post GET    /bulletins/:bulletin_id/posts/:id/edit(.:format) posts<span class="hljs-comment">#edit</span>
+     bulletin_post GET    /bulletins/:bulletin_id/posts/:id(.:format)      posts<span class="hljs-comment">#show</span>
+                   PATCH  /bulletins/:bulletin_id/posts/:id(.:format)      posts<span class="hljs-comment">#update</span>
+                   PUT    /bulletins/:bulletin_id/posts/:id(.:format)      posts<span class="hljs-comment">#update</span>
+                   DELETE /bulletins/:bulletin_id/posts/:id(.:format)      posts<span class="hljs-comment">#destroy</span>
+         bulletins GET    /bulletins(.:format)                             bulletins<span class="hljs-comment">#index</span>
+                   POST   /bulletins(.:format)                             bulletins<span class="hljs-comment">#create</span>
+      new_bulletin GET    /bulletins/new(.:format)                         bulletins<span class="hljs-comment">#new</span>
+     edit_bulletin GET    /bulletins/:id/edit(.:format)                    bulletins<span class="hljs-comment">#edit</span>
+          bulletin GET    /bulletins/:id(.:format)                         bulletins<span class="hljs-comment">#show</span>
+                   PATCH  /bulletins/:id(.:format)                         bulletins<span class="hljs-comment">#update</span>
+                   PUT    /bulletins/:id(.:format)                         bulletins<span class="hljs-comment">#update</span>
+                   DELETE /bulletins/:id(.:format)                         bulletins<span class="hljs-comment">#destroy</span>
+              root GET    /                                                welcome<span class="hljs-comment">#index</span>
+</code></pre>
+<p>위와 같은 라우팅 테이블에서 <code>URI Pattern</code>을 주목하자. 외부로부터 들어오는 요청이 이 테이블의 <code>URI Pattern</code>과 일치할 경우 매핑되는 컨트롤러의 액션이 호출된다. 이 때 <code>URI Pattern</code> 중 심볼에 매칭되는 부분은 <code>params[]</code> 해쉬의 키로 사용되어 해당 파라미터의 값을 불러올 수 있게 된다. 위의 예에서는 <code>params[:bulletin_id]</code> 키에 해당하는 파라미터 값을 불러와 액션에서 사용할 수 있게 된다.</p>
 <p>특정 게시판의 게시물 목록을 불러오는 예를 들어 보자.</p>
 <pre><code>Prefix : bulletin_posts
 Verb : GET
@@ -483,34 +485,35 @@ Controller#Action : posts#index
 <p>또한 이 <code>URI Pattern</code>에 매핑되는 해당 컨트롤러의 액션에서는 <code>params[:bulletin_id]</code> 해시키를 이용하여 <code>&#39;공지사항&#39;</code> 값을 얻을 수 있게 된다.</p>
 <h2 id="posts-">posts 컨트롤러의 변경</h2>
 <p><code>Controller#Action</code>의 <code>posts#index</code>는 <code>posts</code> 컨트롤러의 <code>index</code> 액션을 호출하라는 의미이다. 여기서는  <code>app/controllers/posts_controller.rb</code> 파일의 <code>index</code> 액션 코드만을 주목하자.</p>
-<pre><code>class PostsController &lt; ApplicationController
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostsController</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">ApplicationController</span></span></span>
 
-  before_action :set_bulletin
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action <span class="hljs-symbol">:set_bulletin</span>
+  before_action <span class="hljs-symbol">:set_post</span>, <span class="hljs-symbol">only:</span> [<span class="hljs-symbol">:show</span>, <span class="hljs-symbol">:edit</span>, <span class="hljs-symbol">:update</span>, <span class="hljs-symbol">:destroy</span>]
 
 
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = @bulletin.posts.all
-  end
+  <span class="hljs-comment"># GET /posts</span>
+  <span class="hljs-comment"># GET /posts.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>index
+    <span class="hljs-variable">@posts</span> = <span class="hljs-variable">@bulletin</span>.posts.all
+  <span class="hljs-keyword">end</span>
 
 ...중략~
 
   private
-    def set_bulletin
-      @bulletin = Bulletin.friendly.find(params[:bulletin_id])
-    end
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>set_bulletin
+      <span class="hljs-variable">@bulletin</span> = <span class="hljs-constant">Bulletin</span>.friendly.find(params[<span class="hljs-symbol">:bulletin_id</span>])
+    <span class="hljs-keyword">end</span>
 
-    def set_post
-      @post = @bulletin.posts.find(params[:id])
-    end
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>set_post
+      <span class="hljs-variable">@post</span> = <span class="hljs-variable">@bulletin</span>.posts.find(params[<span class="hljs-symbol">:id</span>])
+    <span class="hljs-keyword">end</span>
 
-    def post_params
-      params.require(:post).permit(:title, :content)
-    end
-end
-</code></pre><p><code>index</code> 액션의 인스턴스 변수 <code>@bulletin</code>는, 액션 실행전에 수행되는 <code>set_bulletin</code> 메소드의 결과로 만들어진다. 이 <code>private</code>  메소드는 <code>posts</code> 컨트롤러의 모든 액션이 실행되기 전에 수행된다. 반면에, <code>before_action</code>인 <code>set_post</code> 메소드는 <code>:show</code> <code>:edit</code>, <code>:update</code>, <code>:destroy</code> 액션이 실행되기 전에만 수행된다(<code>before_action</code> 매크로의 <code>:only</code> 옵션으로 지정함). 따라서 <code>index</code> 액션이 실행될 때는 <code>set_posts</code> 메소드가 사전에 실행되지 않게 된다. <code>index</code> 액션에서는 궁극적으로 인스턴스 변수 <code>@posts</code>를 생성하게 되고 이것은 해당 뷰 템플릿(<code>app/views/posts/index.html.erb</code>)에서 바로 사용할 수 있게 된다.</p>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>post_params
+      params.<span class="hljs-keyword">require</span>(<span class="hljs-symbol">:post</span>).permit(<span class="hljs-symbol">:title</span>, <span class="hljs-symbol">:content</span>)
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p><code>index</code> 액션의 인스턴스 변수 <code>@bulletin</code>는, 액션 실행전에 수행되는 <code>set_bulletin</code> 메소드의 결과로 만들어진다. 이 <code>private</code>  메소드는 <code>posts</code> 컨트롤러의 모든 액션이 실행되기 전에 수행된다. 반면에, <code>before_action</code>인 <code>set_post</code> 메소드는 <code>:show</code> <code>:edit</code>, <code>:update</code>, <code>:destroy</code> 액션이 실행되기 전에만 수행된다(<code>before_action</code> 매크로의 <code>:only</code> 옵션으로 지정함). 따라서 <code>index</code> 액션이 실행될 때는 <code>set_posts</code> 메소드가 사전에 실행되지 않게 된다. <code>index</code> 액션에서는 궁극적으로 인스턴스 변수 <code>@posts</code>를 생성하게 되고 이것은 해당 뷰 템플릿(<code>app/views/posts/index.html.erb</code>)에서 바로 사용할 수 있게 된다.</p>
 
                     
                     </section>
