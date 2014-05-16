@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.7" data-basepath=".." data-revision="1400211838695">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.7" data-basepath=".." data-revision="1400212208803">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -550,8 +550,6 @@ enabled=1
 <pre><code># /etc/init.d/nginx start
 </code></pre></li>
 </ul>
-<hr>
-
 <h2 id="mysql-5-5-36-ref-http-www-webtatic-com-packages-mysql55-">MySQL (5.5.36) 서버 (<a href="http://www.webtatic.com/packages/mysql55/" target="_blank">ref.</a>)</h2>
 <ul>
 <li><p>MySQL 서버를 설치하기 전에 mysql 관련된 것을 모두 제거한다.</p>
@@ -563,18 +561,20 @@ enabled=1
 # service mysqld start
 # mysql_secure_installation
 </code></pre></li>
+</ul>
+<ul>
 <li><p>/etc/my.cnf 파일에 아래 줄을 추가해 준다.</p>
 <pre><code>[mysqld]
 character-set-server = utf8
 </code></pre></li>
+</ul>
+<ul>
 <li><p>권한을 승인한다.</p>
 <pre><code># mysql -u root -p
 
 mysql&gt; grant usage on *.* to deployer@localhost identified by &#39;password&#39;;
 </code></pre></li>
 </ul>
-<hr>
-
 <h2 id="nodejs-">NodeJs 설치</h2>
 <p>: [참고] : <a href="https://www.digitalocean.com/community/articles/how-to-install-and-run-a-node-js-app-on-centos-6-4-64bit" target="_blank">https://www.digitalocean.com/community/articles/how-to-install-and-run-a-node-js-app-on-centos-6-4-64bit</a></p>
 <pre><code># cd /usr/src
@@ -584,9 +584,7 @@ mysql&gt; grant usage on *.* to deployer@localhost identified by &#39;password&#
 # ./configure
 # make   (6-7분 소요됨)  pc 사양이 좋으면 3분안에 끝나기도 함 ㅎㅎㅎ.
 # make install
-</code></pre><hr>
-
-<h2 id="imagemagick-">ImageMagick 설치 (시간 많이 걸리네~)</h2>
+</code></pre><h2 id="imagemagick-">ImageMagick 설치 (시간 많이 걸리네~)</h2>
 <pre><code># yum install -y tcl-devel libpng-devel libjpeg-devel ghostscript-devel bzip2-devel freetype-devel libtiff-devel
 # wget ftp://ftp.imagemagick.org/pub/ImageMagick/ImageMagick.tar.gz
 
@@ -605,6 +603,8 @@ mysql&gt; grant usage on *.* to deployer@localhost identified by &#39;password&#
 
 export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 </code></pre></li>
+</ul>
+<ul>
 <li><p>그리고, root 계정으로 접속해서</p>
 <pre><code># ln -s /usr/local/include/ImageMagick/wand /usr/local/include/wand
 # ln -s /usr/local/include/ImageMagick/magick /usr/local/include/magick
@@ -613,7 +613,6 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 # cd ~
 </code></pre></li>
 </ul>
-<p><hr></p>
 <h2 id="-">배포</h2>
 <p>: 이후부터는 로컬에서 capistrano로 배포작업을 수행한다.</p>
 <ul>
@@ -627,8 +626,6 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 
 <h1 id="-">부록</h1>
 <p>: 아래의 설치는 옵션이다.</p>
-<hr>
-
 <h2 id="postfix-">Postfix 설치</h2>
 <p>: 서버에서 이메일을 보내고 싶은 경우 설치한다.</p>
 <ul>
@@ -636,17 +633,13 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 <pre><code># yum install -y postfix
 </code></pre></li>
 </ul>
-<hr>
-
 <h2 id="git-">Git 업그레이드하기</h2>
 <p>: 참고 - <a href="http://tecadmin.net/how-to-upgrade-git-version-1-7-10-on-centos-6" target="_blank">http://tecadmin.net/how-to-upgrade-git-version-1-7-10-on-centos-6</a></p>
 <pre><code># rpm -i &#39;http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm&#39;
 # rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 </code></pre><p>아래와 같이 rpmforge.repo 파일을 열어서 [rpmforge-extras] 부분의 enabled=0 to 1로 변경한다.</p>
 <pre><code># vim /etc/yum.repos.d/rpmforge.repo
-</code></pre><hr>
-
-<h2 id="git-">Git 별도설치</h2>
+</code></pre><h2 id="git-">Git 별도설치</h2>
 <p>: <code>git</code>를 별도록 설치할 때 아래와 같이 한다.</p>
 <ul>
 <li><code>git</code>를 소스컴파일로 설치한다. (<a href="http://rajivpandit.wordpress.com/2013/09/21/how-to-install-git-1-8-4-and-git-client-on-linux-centos-6-4-rhel6/" target="_blank">ref.</a>) 깔금하게 설치된다.</li>
@@ -662,7 +655,6 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 # export PATH=”/opt/git/bin:$PATH”
 </code></pre></li>
 </ul>
-<p><hr></p>
 <h2 id="-">구글링 자료 모음</h2>
 <ul>
 <li><a href="http://www.centos.org" target="_blank">http://www.centos.org</a> [공식홈페이지]</li>
@@ -671,7 +663,7 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 <li><a href="http://mcchae.egloos.com/10937303" target="_blank">http://mcchae.egloos.com/10937303</a> [지훈현서의 CentOS 6.3 미니멀(서버) 설치하기, 한글]</li>
 </ul>
 <p><hr>
-최종갱신일 : 2014년 3월 8일 오전 8:20 현재</p>
+최종갱신일 : 2014년 5월 16일</p>
 <p>작성자 : 최효성</p>
 
                     
