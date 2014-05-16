@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.7" data-basepath=".." data-revision="1400212208803">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.7" data-basepath=".." data-revision="1400212591980">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -619,8 +619,9 @@ export PKG_CONFIG_PATH=&quot;/usr/local/lib/pkgconfig&quot;
 <li><p>프로젝트의 Gemfile 파일에 아래의 젬을 추가하고 bundle install 한다.</p>
 <pre><code>gem &#39;capistrano-rbenv&#39;
 </code></pre></li>
-<li><p><code>capistrano</code>와 <code>capistrano-rbenv</code> 젬을  레일스 프로젝트의 <code>gemfile</code>에 추가하여, <code>bundle install</code> 하면, <code>capistrano</code>로 배포시, 특히, <code>cap deploy:setup</code> 명령을 실행하면, 자동으로 <code>rbenv</code>와 <code>ruby-build</code>가 설치되고, 디폴트로 <code>1.9.3-p194</code> 버전 루비가 설치된다. <code>config/deploy.rb</code> 파일에 <code>set :rbenv_ruby_version, &quot;1.9.3-p286&quot;</code> 와 같이 추가해 주면, 원하는 루비 버전을 설치할 수도 있다. <a href="https://github.com/yyuu/capistrano-rbenv" target="_blank">ref.</a></p>
-</li>
+</ul>
+<ul>
+<li><code>capistrano</code>와 <code>capistrano-rbenv</code> 젬을  레일스 프로젝트의 <code>gemfile</code>에 추가하여, <code>bundle install</code> 하면, <code>capistrano</code>로 배포시, 특히, <code>cap deploy:setup</code> 명령을 실행하면, 자동으로 <code>rbenv</code>와 <code>ruby-build</code>가 설치되고, 디폴트로 <code>1.9.3-p194</code> 버전 루비가 설치된다. <code>config/deploy.rb</code> 파일에 <code>set :rbenv_ruby_version, &quot;1.9.3-p286&quot;</code> 와 같이 추가해 주면, 원하는 루비 버전을 설치할 수도 있다. <a href="https://github.com/yyuu/capistrano-rbenv" target="_blank">ref.</a></li>
 </ul>
 <hr>
 
