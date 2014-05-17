@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
         
         <meta charset="UTF-8">
-        <title>리눅스 개발머신에 설치하기 | 초보자를 위한 레일스 가이드북</title>
+        <title>갤러리형 레이아웃 작성하기 | 초보자를 위한 레일스 가이드북</title>
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="robots" content="index, follow">
@@ -13,13 +13,13 @@
         <meta name="generator" content="www.gitbook.io">
 
         
-        <link rel="next" href="../../contents/walkthrough/start.html" />
+        <link rel="next" href="../../deployment/first.html" />
         
         
-        <link rel="prev" href="../../contents/rails/mac_install.html" />
+        <link rel="prev" href="../../contents/walkthrough/bulletin_type.html" />
         
 
-        <meta property="og:title" content="리눅스 개발머신에 설치하기 | 초보자를 위한 레일스 가이드북">
+        <meta property="og:title" content="갤러리형 레이아웃 작성하기 | 초보자를 위한 레일스 가이드북">
         <meta property="og:site_name" content="초보자를 위한 레일스 가이드북">
         <meta property="og:type" content="book">
         <meta property="og:locale" content="en_US">
@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="4.3" data-basepath="../.." data-revision="1400331060510">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.12" data-basepath="../.." data-revision="1400331060510">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -124,7 +124,7 @@
 
         
         <li>
-            <a href="https://github.com/RORLabGitBook/guideline/edit/master/contents/rails/linux_install.md" target="blank">Edit and Contribute</a>
+            <a href="https://github.com/RORLabGitBook/guideline/edit/master/contents/walkthrough/gallery_layout.md" target="blank">Edit and Contribute</a>
         </li>
         
 
@@ -430,7 +430,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 40.625%;min-width: 37.5%;"></div>
+        <div class="inner" style="width: 56.25%;min-width: 53.125%;"></div>
     </div>
     <div class="chapters">
     
@@ -462,15 +462,15 @@
     
         <a href="../../contents/rails/linux_install.html" title="리눅스 개발머신에 설치하기" class="chapter done " data-progress="4.3" style="left: 40.625%;"></a>
     
-        <a href="../../contents/walkthrough/start.html" title="프로젝트 따라하기" class="chapter  new-chapter" data-progress="5" style="left: 43.75%;"></a>
+        <a href="../../contents/walkthrough/start.html" title="프로젝트 따라하기" class="chapter done new-chapter" data-progress="5" style="left: 43.75%;"></a>
     
-        <a href="../../contents/walkthrough/gemfile.html" title="Gemfile의 작성" class="chapter  " data-progress="5.1" style="left: 46.875%;"></a>
+        <a href="../../contents/walkthrough/gemfile.html" title="Gemfile의 작성" class="chapter done " data-progress="5.1" style="left: 46.875%;"></a>
     
-        <a href="../../contents/walkthrough/posts_view_file.html" title="posts 뷰 변경" class="chapter  " data-progress="5.10" style="left: 50%;"></a>
+        <a href="../../contents/walkthrough/posts_view_file.html" title="posts 뷰 변경" class="chapter done " data-progress="5.10" style="left: 50%;"></a>
     
-        <a href="../../contents/walkthrough/bulletin_type.html" title="게시판 레이아웃 작성하기" class="chapter  " data-progress="5.11" style="left: 53.125%;"></a>
+        <a href="../../contents/walkthrough/bulletin_type.html" title="게시판 레이아웃 작성하기" class="chapter done " data-progress="5.11" style="left: 53.125%;"></a>
     
-        <a href="../../contents/walkthrough/gallery_layout.html" title="갤러리형 레이아웃 작성하기" class="chapter  " data-progress="5.12" style="left: 56.25%;"></a>
+        <a href="../../contents/walkthrough/gallery_layout.html" title="갤러리형 레이아웃 작성하기" class="chapter done " data-progress="5.12" style="left: 56.25%;"></a>
     
         <a href="../../contents/walkthrough/welcome_controller.html" title="welcome 컨트롤러의 생성" class="chapter  " data-progress="5.2" style="left: 59.375%;"></a>
     
@@ -505,81 +505,205 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_20">
+                    <section class="normal" id="section-gitbook_31">
                     
-                        <h1 id="-">리눅스 개발머신에 설치하기</h1>
-<h2 id="-14-04-lts-trusty-tahr-">우분투 14.04 LTS (Trusty Tahr)의 경우</h2>
-<p><a href="https://gorails.com/setup/ubuntu/14.04" target="_blank">gorail.com 사이트 참조</a></p>
-<h3 id="ruby-2-1-2-">Ruby 설치 (2.1.2)</h3>
-<p>Ruby 설치를 위해 필요한 라이브러리 등을 우선 설치합니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> apt-get update
-$ <span class="hljs-built_in">sudo</span> apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
-</code></pre>
-<p>설치 방법은 rbenv나 rvm을 이용하거나, 혹은 소스로 직접 설치하는 방법이 있습니다. 공식적으로 rbenv를 이용할 것을 권장하고 있습니다.</p>
-<h4 id="rbenv-">rbenv 를 이용하는 방법</h4>
-<p>rbenv를 이용해서 ruby를 설치하는 것은 매우 간단합니다. 우선 rbenv를 설치하고, ruby-build를 하면 됩니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span>
-$ git clone git://github.com/sstephenson/rbenv.git .rbenv
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-keyword">exec</span> <span class="hljs-variable">$SHELL</span>
+                        <h1 id="-">갤러리형 레이아웃 작성하기</h1>
+<p>이전에 언급한 바와 같이 게시판의 종류를 세가지로 분류한 바 있다. 일반형, 블로그형, 갤러리형 세가지 중에 일반형과 블로그형은 이미 전용 레이아웃을 구현하였고, 이제 남은 건 <code>갤러리형</code> 레이아웃을 만드는 것이다.</p>
+<p><code>갤러리형</code> 게시판은 이미지를 업로드할 수 있으면 업로드된 이미지들은 쎔네일 형태로 보이도록 하고자 한다.</p>
+<p>이미지를 업로드를 구현하기 위해서는 두가지 젬을 사용할 수 있다. 하나는 <a href="https://github.com/thoughtbot/paperclip" target="_blank"><code>paperclip</code></a>이고 다른 하나는 <a href="https://github.com/carrierwaveuploader/carrierwave" target="_blank"><code>carrierwave</code></a>라는 젬이다.</p>
+<p>이 두 젬은 모두 시스템에 <code>ImageMagick</code>이라는 툴이 설치되어 있어야 한다. 시스템에서 아래와 같은 명령으로 설치 여부를 알 수 있다.</p>
+<pre><code class="lang-bash">$ convert
 
-$ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-keyword">exec</span> <span class="hljs-variable">$SHELL</span>
+Version: ImageMagick <span class="hljs-number">6.8</span>.<span class="hljs-number">7</span>-<span class="hljs-number">7</span> Q16 x86_64 <span class="hljs-number">2013</span>-<span class="hljs-number">11</span>-<span class="hljs-number">27</span> http://www.imagemagick.org
+Copyright: Copyright (C) <span class="hljs-number">1999</span>-<span class="hljs-number">2014</span> ImageMagick Studio LLC
+Features: DPC Modules
+Delegates: bzlib freetype jng jpeg ltdl png xml zlib
+~중략~
+</code></pre>
+<p>만약 설치되어 있지 않으면 <a href="../appendices/imagemagick.html"><code>ImageMagick 설치하기</code></a>를 참고하여 설치하면 된다.</p>
+<h2 id="carrierwave-">Carrierwave 젬 설치하기</h2>
+<p>여기서는 <a href="https://github.com/carrierwaveuploader/carrierwave" target="_blank"><code>carrierwave</code></a> 젬을 사용하기로 한다.</p>
+<p>Gemfile에 아래와 같이 젬을 추가한다.</p>
+<pre><code class="lang-ruby">gem <span class="hljs-string">'carrierwave'</span>
+</code></pre>
+<p>젬을 설치한다.</p>
+<pre><code class="lang-bash">$ bundle install
+</code></pre>
+<h2 id="-">업로드 클래스의 생성</h2>
+<p>이미지 업로드를 위한 <code>Picture</code>라는 이름을 가지는 업로더를 생성한다.</p>
+<pre><code class="lang-bash">$ bin/rails g uploader Picture
+      create  app/uploaders/picture_uploader.rb
+</code></pre>
+<p>생성된 <code>PictureUploader</code> 클래스 파일의 내용은 아래와 같다</p>
+<pre><code class="lang-ruby"><span class="hljs-comment"># encoding: utf-8</span>
 
-$ rbenv install <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ rbenv global <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ ruby -v
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PictureUploader</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">CarrierWave::Uploader</span></span>::<span class="hljs-title">Base</span></span>
+
+  <span class="hljs-comment"># Include RMagick or MiniMagick support:</span>
+  <span class="hljs-comment"># include CarrierWave::RMagick</span>
+  <span class="hljs-comment"># include CarrierWave::MiniMagick</span>
+
+  <span class="hljs-comment"># Choose what kind of storage to use for this uploader:</span>
+  storage <span class="hljs-symbol">:file</span>
+  <span class="hljs-comment"># storage :fog</span>
+
+  <span class="hljs-comment"># Override the directory where uploaded files will be stored.</span>
+  <span class="hljs-comment"># This is a sensible default for uploaders that are meant to be mounted:</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>store_dir
+    <span class="hljs-string">"uploads/<span class="hljs-subst">#{model.<span class="hljs-keyword">class</span>.to_s.underscore}</span>/<span class="hljs-subst">#{mounted_as}</span>/<span class="hljs-subst">#{model.id}</span>"</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># Provide a default URL as a default if there hasn't been a file uploaded:</span>
+  <span class="hljs-comment"># def default_url</span>
+  <span class="hljs-comment">#   # For Rails 3.1+ asset pipeline compatibility:</span>
+  <span class="hljs-comment">#   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment">#   "/images/fallback/" + [version_name, "default.png"].compact.join('_')</span>
+  <span class="hljs-comment"># end</span>
+
+  <span class="hljs-comment"># Process files as they are uploaded:</span>
+  <span class="hljs-comment"># process :scale =&gt; [200, 300]</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># def scale(width, height)</span>
+  <span class="hljs-comment">#   # do something</span>
+  <span class="hljs-comment"># end</span>
+
+  <span class="hljs-comment"># Create different versions of your uploaded files:</span>
+  <span class="hljs-comment"># version :thumb do</span>
+  <span class="hljs-comment">#   process :resize_to_fit =&gt; [50, 50]</span>
+  <span class="hljs-comment"># end</span>
+
+  <span class="hljs-comment"># Add a white list of extensions which are allowed to be uploaded.</span>
+  <span class="hljs-comment"># For images you might use something like this:</span>
+  <span class="hljs-comment"># def extension_white_list</span>
+  <span class="hljs-comment">#   %w(jpg jpeg gif png)</span>
+  <span class="hljs-comment"># end</span>
+
+  <span class="hljs-comment"># Override the filename of the uploaded files:</span>
+  <span class="hljs-comment"># Avoid using model.id or version_name here, see uploader/store.rb for details.</span>
+  <span class="hljs-comment"># def filename</span>
+  <span class="hljs-comment">#   "something.jpg" if original_filename</span>
+  <span class="hljs-comment"># end</span>
+
+<span class="hljs-keyword">end</span>
 </code></pre>
-<p>마지막 작업은 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
+<p>사용법에 대한 자세한 안내가 코멘트로 처리되어 있다. 코멘트를 제거한 클래스를 보면 아래와 같다.</p>
+<pre><code class="lang-ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PictureUploader</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">CarrierWave::Uploader</span></span>::<span class="hljs-title">Base</span></span>
+
+  storage <span class="hljs-symbol">:file</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>store_dir
+    <span class="hljs-string">"uploads/<span class="hljs-subst">#{model.<span class="hljs-keyword">class</span>.to_s.underscore}</span>/<span class="hljs-subst">#{mounted_as}</span>/<span class="hljs-subst">#{model.id}</span>"</span>
+  <span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">end</span>
 </code></pre>
-<h4 id="rvm-">rvm 을 이용하는 방법</h4>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-$ curl -L https://get.rvm.io | bash <span class="hljs-operator">-s</span> stable
-$ <span class="hljs-built_in">source</span> ~/.rvm/scripts/rvm
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"source ~/.rvm/scripts/rvm"</span> &gt;&gt; ~/.bashrc
-$ rvm install <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ rvm use <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span> --default
-$ ruby -v
+<h2 id="picture-">Picture 속성 추가하기</h2>
+<p><code>Post</code> 클래스에 <code>picture</code> 속성을 추가하기 위해서 아래와 같이 마이그레이션 클래스 파일을 생성하고 DB 마이그레이션 한다.</p>
+<pre><code class="lang-bash">$ bin/rails g migration add_picture_to_posts picture
+      invoke  active_record
+      create    db/migrate/<span class="hljs-number">20140517023813</span>_add_picture_to_posts.rb
+
+$ bin/rake db:migrate
+== <span class="hljs-number">20140517023813</span> AddPictureToPosts: migrating ================================
+-- add_column(:posts, :picture, :string)
+   -&gt; <span class="hljs-number">0.0023</span>s
+== <span class="hljs-number">20140517023813</span> AddPictureToPosts: migrated (<span class="hljs-number">0.0024</span>s) =======================
 </code></pre>
-<p>마지막 작업은 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
+<h2 id="-">업로더 마운트하기</h2>
+<p><code>Post</code> 클래스 파일(<code>app/models/post.rb</code>)을 열어 <code>PictureUploader</code>  업로더 클래스를 <code>picture</code> 속성으로 마우트한다.</p>
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">ActiveRecord::Base</span></span></span>
+  belongs_to <span class="hljs-symbol">:bulletin</span>
+  mount_uploader <span class="hljs-symbol">:picture</span>, <span class="hljs-constant">PictureUploader</span>
+<span class="hljs-keyword">end</span>
 </code></pre>
-<h4 id="-">소스로 직접 설치하는 방법</h4>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span>
-$ wget http://ftp.ruby-lang.org/pub/ruby/<span class="hljs-number">2.1</span>/ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>.tar.gz
-$ tar -xzvf ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>.tar.gz
-$ <span class="hljs-built_in">cd</span> ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>/
-$ ./configure
-$ make
-$ <span class="hljs-built_in">sudo</span> make install
-$ ruby -v
+<h2 id="minimagick-">MiniMagick 젬 추가하기</h2>
+<p>이미지 크기를 조절하기 위해서 <code>Rmagick</code>이나 <code>MiniMagick</code> 젬을 추가한다. <code>carrierwave</code> 문서에 따르면 <code>MiniMagick</code> 젬을 추천하므로 아래와 같이 <code>Gemfile</code>에 <code>minimagick</code> 젬을 추가하고,</p>
+<pre><code>gem &#39;mini_magick&#39;
+</code></pre><p>젬을 설치한다.</p>
+<pre><code class="lang-bash">$ bundle install
 </code></pre>
-<p>마지막 작업은 역시 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
+<h2 id="-">업로더에 이미지 크기 옵션 추가하기</h2>
+<pre><code class="lang-ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PictureUploader</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">CarrierWave::Uploader</span></span>::<span class="hljs-title">Base</span></span>
+
+  <span class="hljs-keyword">include</span> <span class="hljs-constant">CarrierWave::MiniMagick</span>
+
+  storage <span class="hljs-symbol">:file</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>store_dir
+    <span class="hljs-string">"uploads/<span class="hljs-subst">#{model.<span class="hljs-keyword">class</span>.to_s.underscore}</span>/<span class="hljs-subst">#{mounted_as}</span>/<span class="hljs-subst">#{model.id}</span>"</span>
+  <span class="hljs-keyword">end</span>
+
+  process <span class="hljs-symbol">:resize_to_fit</span> =&gt; [<span class="hljs-number">800</span>, <span class="hljs-number">800</span>]
+
+  version <span class="hljs-symbol">:thumb</span> <span class="hljs-keyword">do</span>
+    process <span class="hljs-symbol">:resize_to_fill</span> =&gt; [<span class="hljs-number">200</span>,<span class="hljs-number">200</span>]
+  <span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">end</span>
 </code></pre>
-<h3 id="git-">Git 설정</h3>
-<p>본 가이드의 <a href="git.html"><code>Git 설치하기</code></a> 참조</p>
-<h3 id="rails-">Rails 설치</h3>
-<p>Rails는 상당히 많은 프로그램에 의존하기 때문에 NodeJS와 같은 Javascript runtime을 설치해야 합니다. 이는 Rails에서 Coffeescript와 the Asset Pipeline을 사용할 수 있도록 해주고, javascript를 최소화해 더 빠른 제작환경을 만들어줍니다.</p>
-<p>NodeJS를 설치하기 위해서는 PPA repository를 추가해야 합니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> add-apt-repository ppa:chris-lea/node.js
-$ <span class="hljs-built_in">sudo</span> apt-get update
-$ <span class="hljs-built_in">sudo</span> apt-get install nodejs
+<h2 id="post-">Post 폼에 파일업로드 추가하기</h2>
+<p>폼 <code>partial</code> 템플릿 파일(<code>app/views/posts/_form.html.erb</code>)을 아래와 같이 추가한다.</p>
+<pre><code class="lang-erb">&lt;% if @post.bulletin.post_type == &quot;gallery&quot; %&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;%= f.input :picture, as: :file, input_html:{ class: &#39;form-control&#39; } %&gt;
+    &lt;%= f.hidden_field :picture_cache %&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
 </code></pre>
-<p>그리고 rails를 설치합니다.</p>
-<pre><code class="lang-bash">$ gem install rails
+<p>위에서 <code>erb</code> 코드 부분을 보면, <code>gallery</code>형 게시판에서만 이미지를 업로드할 수 있도록 조건을 추가한 것을 주목하자.</p>
+<h2 id="-">갤러리 게시판을 생성</h2>
+<p>우선 게시판 생성시 <code>Post type</code>에 <code>gallery</code> 옵션을 추가하기 위해 아래와 같이 작성한다.</p>
+<pre><code class="lang-erb">&lt;div class=&quot;form-group&quot;&gt;
+  &lt;%= f.input :post_type, collection: [ [&#39;게시판&#39;, &#39;bulletin&#39;], [&#39;블로그&#39;, &#39;blog&#39;], [&#39;갤러리&#39;, &#39;gallery&#39;]], input_html:{ class:&#39;form-control&#39;} %&gt;
+&lt;/div&gt;
 </code></pre>
-<p>rbenv를 사용하고 있다면 rails를 사용하기 위해서는 다음의 명령어를 실행해야 합니다.</p>
-<pre><code class="lang-bash">$ rbenv rehash
+<p>다음으로, 이미지를 업로드하는 게시판을 생성하기 위해서 <code>http://localhost:3000/bulletins</code>로 접속한 후 아래와 같이 &quot;갤러리&quot;라는 게시판을 추가한다. 이 때 <code>Post_type</code>에서 <code>갤러리</code>로 선택하고 저장한다.</p>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-17_12-13-02_zpsb3c96ebb.png" alt=""></p>
+<p>이렇게 해서 게시판은 총 4개가 되었다.</p>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-17_12-18-25_zps5b7f02bb.png" alt=""></p>
+<p>이제 어플리케이션 레이아웃 파일(<code>app/views/layouts/application.html.erb</code>)을 열고, 상단 메뉴항목에 <code>갤러리</code>를 추가한다.</p>
+<pre><code class="lang-erb">&lt;div class=&quot;navbar-collapse collapse&quot;&gt;
+  &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+    &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;공지사항&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;공지사항&#39;, bulletin_posts_path(&#39;공지사항&#39;) %&gt;&lt;/li&gt;
+    &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;새소식&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;새소식&#39;, bulletin_posts_path(&#39;새소식&#39;) %&gt;&lt;/li&gt;
+    &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;가입인사&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;가입인사&#39;, bulletin_posts_path(&#39;가입인사&#39;) %&gt;&lt;/li&gt;
+    &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;갤러리&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;갤러리&#39;, bulletin_posts_path(&#39;갤러리&#39;) %&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 </code></pre>
-<p>rails가 제대로 설치되었다면 rails -v 명령어로 버전을 확인하면 제대로 설치되었는지 알 수 있습니다.</p>
-<pre><code class="lang-bash">$ rails -v
-<span class="hljs-comment"># Rails 4.1.1</span>
+<p>갤러리 게시판에서 이미지를 추가하는 화면은 아래와 같다.</p>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-17_12-31-35_zps0d325841.png" alt=""></p>
+<p>다음에는 <code>갤러리</code>용 <code>partial</code> 템플릿 파일을 생성하기 위해  <code>app/views/posts/post_types/</code> 디렉토리에 <code>_gallery.html.erb</code> 파일을 추가하고 아래와 같이 작성한다.</p>
+<pre><code class="lang-erb">&lt;h2&gt;&lt;%= params[:bulletin_id] %&gt;&lt;/h2&gt;
+
+&lt;% @posts.each do | post | %&gt;
+    &lt;div class=&#39;gallery&#39;&gt;
+      &lt;div class=&#39;picture&#39;&gt;&lt;%= image_tag(post.picture_url) if post.picture? %&gt;&lt;/div&gt;
+      &lt;div class=&#39;title&#39;&gt;&lt;%= post.title %&gt;&lt;/div&gt;
+      &lt;div class=&#39;content&#39;&gt;&lt;%= simple_format post.content %&gt;&lt;/div&gt;
+      &lt;div&gt;
+          &lt;%= link_to &#39;Show&#39;, [post.bulletin, post], class:&#39;btn btn-default&#39; %&gt;
+          &lt;%= link_to &#39;Edit&#39;, edit_bulletin_post_path(post.bulletin, post), class:&#39;btn btn-default&#39; %&gt;
+          &lt;%= link_to &#39;Destroy&#39;, [post.bulletin, post], method: :delete, data: { confirm: &#39;Are you sure?&#39; }, class:&#39;btn btn-default&#39; %&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;% end %&gt;
+
+&lt;br&gt;
+
+&lt;%= link_to &#39;New Post&#39;, new_bulletin_post_path, class: &#39;btn btn-default&#39; %&gt;
 </code></pre>
-<p>만일 다른 결과가 나온다면, 설치가 제대로 되지 않았다는 의미입니다.</p>
+<p>또한, 업로더 클래스에 아래와 같이 업로드할 수 있는 파일 포맷을 지정할 수 있다.</p>
+<pre><code class="lang-ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> </span>extension_white_list
+  <span class="hljs-string">%w(jpg jpeg gif png pdf)</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>이제 <code>.jpg</code>, <code>.jpeg</code>, <code>.gif</code>, <code>.png</code>, <code>.pdf</code> 확장자를 가진 파일만 업로드할 수 있게 된다.</p>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/2014-05-17_16-00-09_zps29ff9da5.png" alt=""></p>
 
                     
                     </section>
@@ -589,10 +713,10 @@ $ <span class="hljs-built_in">sudo</span> apt-get install nodejs
         </div>
 
         
-        <a href="../../contents/rails/mac_install.html" class="navigation navigation-prev "><i class="fa fa-angle-left"></i></a>
+        <a href="../../contents/walkthrough/bulletin_type.html" class="navigation navigation-prev "><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../contents/walkthrough/start.html" class="navigation navigation-next "><i class="fa fa-angle-right"></i></a>
+        <a href="../../deployment/first.html" class="navigation navigation-next "><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -1,38 +1,40 @@
 CACHE MANIFEST
-# Revision 1400214231394
+# Revision 1400331060511
 
 CACHE:
 appendices/appendix.html
 appendices/blogs.html
 appendices/books.html
 appendices/screencasts.html
+appendices/imagemagick.html
 index.html
 contents/pro_env.html
 contents/authors.html
 contents/editors.html
-contents/git.html
 contents/environments.html
+contents/git.html
 contents/dev_env.html
-contents/rails/linux_install.html
 contents/rails/install.html
+contents/rails/linux_install.html
 contents/rails/mac_install.html
 contents/rails/using_installer.html
 contents/rbenv.html
-contents/rvm.html
 contents/rubyonrails_intro.html
-contents/walkthrough/posts_CRUD.html
+contents/rvm.html
+contents/walkthrough/model_association.html
 contents/walkthrough/bulletin.html
 contents/walkthrough/first_model.html
+contents/walkthrough/gallery_layout.html
 contents/walkthrough/gemfile.html
 contents/walkthrough/layout.html
-contents/walkthrough/model_association.html
 contents/walkthrough/bulletin_type.html
+contents/walkthrough/posts_CRUD.html
 contents/walkthrough/posts_controller_modified.html
 contents/walkthrough/posts_view_file.html
 contents/walkthrough/start.html
 contents/walkthrough/top_menu.html
-contents/walkthrough/welcome_controller.html
 deployment/first.html
+contents/walkthrough/welcome_controller.html
 gitbook/app.js
 gitbook/fonts/anonymouspro/400.woff
 gitbook/fonts/anonymouspro/400i.woff
