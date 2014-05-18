@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
         
         <meta charset="UTF-8">
-        <title>리눅스 개발머신에 설치하기 | 초보자를 위한 레일스 가이드북</title>
+        <title>flash 메시지 표시하기 | 초보자를 위한 레일스 가이드북</title>
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="robots" content="index, follow">
@@ -13,13 +13,13 @@
         <meta name="generator" content="www.gitbook.io">
 
         
-        <link rel="next" href="../../contents/walkthrough/start.html" />
+        <link rel="next" href="../../deployment/first.html" />
         
         
-        <link rel="prev" href="../../contents/rails/mac_install.html" />
+        <link rel="prev" href="../../contents/walkthrough/gallery_layout.html" />
         
 
-        <meta property="og:title" content="리눅스 개발머신에 설치하기 | 초보자를 위한 레일스 가이드북">
+        <meta property="og:title" content="flash 메시지 표시하기 | 초보자를 위한 레일스 가이드북">
         <meta property="og:site_name" content="초보자를 위한 레일스 가이드북">
         <meta property="og:type" content="book">
         <meta property="og:locale" content="en_US">
@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="4.3" data-basepath="../.." data-revision="1400397680494">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.13" data-basepath="../.." data-revision="1400397680494">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -124,7 +124,7 @@
 
         
         <li>
-            <a href="https://github.com/RORLabGitBook/guideline/edit/master/contents/rails/linux_install.md" target="blank">Edit and Contribute</a>
+            <a href="https://github.com/RORLabGitBook/guideline/edit/master/contents/walkthrough/flash_message.md" target="blank">Edit and Contribute</a>
         </li>
         
 
@@ -446,7 +446,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 38.23529411764706%;min-width: 35.294117647058826%;"></div>
+        <div class="inner" style="width: 55.88235294117647%;min-width: 52.94117647058823%;"></div>
     </div>
     <div class="chapters">
     
@@ -478,17 +478,17 @@
     
         <a href="../../contents/rails/linux_install.html" title="리눅스 개발머신에 설치하기" class="chapter done " data-progress="4.3" style="left: 38.23529411764706%;"></a>
     
-        <a href="../../contents/walkthrough/start.html" title="프로젝트 따라하기" class="chapter  new-chapter" data-progress="5" style="left: 41.1764705882353%;"></a>
+        <a href="../../contents/walkthrough/start.html" title="프로젝트 따라하기" class="chapter done new-chapter" data-progress="5" style="left: 41.1764705882353%;"></a>
     
-        <a href="../../contents/walkthrough/gemfile.html" title="Gemfile의 작성" class="chapter  " data-progress="5.1" style="left: 44.11764705882353%;"></a>
+        <a href="../../contents/walkthrough/gemfile.html" title="Gemfile의 작성" class="chapter done " data-progress="5.1" style="left: 44.11764705882353%;"></a>
     
-        <a href="../../contents/walkthrough/posts_view_file.html" title="posts 뷰 변경" class="chapter  " data-progress="5.10" style="left: 47.05882352941177%;"></a>
+        <a href="../../contents/walkthrough/posts_view_file.html" title="posts 뷰 변경" class="chapter done " data-progress="5.10" style="left: 47.05882352941177%;"></a>
     
-        <a href="../../contents/walkthrough/bulletin_type.html" title="게시판 레이아웃 작성하기" class="chapter  " data-progress="5.11" style="left: 50%;"></a>
+        <a href="../../contents/walkthrough/bulletin_type.html" title="게시판 레이아웃 작성하기" class="chapter done " data-progress="5.11" style="left: 50%;"></a>
     
-        <a href="../../contents/walkthrough/gallery_layout.html" title="갤러리형 레이아웃 작성하기" class="chapter  " data-progress="5.12" style="left: 52.94117647058823%;"></a>
+        <a href="../../contents/walkthrough/gallery_layout.html" title="갤러리형 레이아웃 작성하기" class="chapter done " data-progress="5.12" style="left: 52.94117647058823%;"></a>
     
-        <a href="../../contents/walkthrough/flash_message.html" title="flash 메시지 표시하기" class="chapter  " data-progress="5.13" style="left: 55.88235294117647%;"></a>
+        <a href="../../contents/walkthrough/flash_message.html" title="flash 메시지 표시하기" class="chapter done " data-progress="5.13" style="left: 55.88235294117647%;"></a>
     
         <a href="../../contents/walkthrough/welcome_controller.html" title="welcome 컨트롤러의 생성" class="chapter  " data-progress="5.2" style="left: 58.8235294117647%;"></a>
     
@@ -525,81 +525,73 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_21">
+                    <section class="normal" id="section-gitbook_32">
                     
-                        <h1 id="-">리눅스 개발머신에 설치하기</h1>
-<h2 id="-14-04-lts-trusty-tahr-">우분투 14.04 LTS (Trusty Tahr)의 경우</h2>
-<p><a href="https://gorails.com/setup/ubuntu/14.04" target="_blank">gorail.com 사이트 참조</a></p>
-<h3 id="ruby-2-1-2-">Ruby 설치 (2.1.2)</h3>
-<p>Ruby 설치를 위해 필요한 라이브러리 등을 우선 설치합니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> apt-get update
-$ <span class="hljs-built_in">sudo</span> apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties
-</code></pre>
-<p>설치 방법은 rbenv나 rvm을 이용하거나, 혹은 소스로 직접 설치하는 방법이 있습니다. 공식적으로 rbenv를 이용할 것을 권장하고 있습니다.</p>
-<h4 id="rbenv-">rbenv 를 이용하는 방법</h4>
-<p>rbenv를 이용해서 ruby를 설치하는 것은 매우 간단합니다. 우선 rbenv를 설치하고, ruby-build를 하면 됩니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span>
-$ git clone git://github.com/sstephenson/rbenv.git .rbenv
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-keyword">exec</span> <span class="hljs-variable">$SHELL</span>
+                        <h1 id="flash-">flash 메시지 표시하기</h1>
+<p>레일스에서는 컨트롤러의 액션 실행시 발생하는 <a href="/appendices/active_record.html">액티브레코드</a> 관련 각종 메시지를 <code>flash</code>라는 세션의 특수한 형태를 통해서 표시할 수 있다. 카메라의 플래시를 연상해 보면 알 수 있듯이 메시지를 짧은 시간만 저장할 수 있으며 레일스 내부적으로는 <code>FlashHash</code> 클래스의 인스턴스이다. 즉, 액션간에 임시로 객체를 전달할 수 있는 수단으로 생각할 수 있다. 따라서 <code>flash</code> 객체에 어떤 것이라고 지정할 수 있고 바로 다음번 액션에서만 사용되고 사라지게 되는 것이다.</p>
+<p>레일스에서는 대게 이러한 <code>flash</code> 메시지를 어플리케이션 레이아웃의 <code>body</code> 태그내 최상단에 위치시킨다.</p>
+<pre><code class="lang-erb">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-$ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
-$ <span class="hljs-keyword">exec</span> <span class="hljs-variable">$SHELL</span>
+  &lt;= 이 곳에 플래시 메시지를 삽입한다. &lt;&lt;&lt;&lt;&lt;
 
-$ rbenv install <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ rbenv global <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ ruby -v
+  &lt;%= yield %&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
-<p>마지막 작업은 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
+<p>이제 <code>Bootstrap 3</code>의 CSS 클래스를 이용해서 이러한 <code>flash</code> 메시지를 실제로 표시해 보자.</p>
+<p>레일스의 <code>scaffold</code> 제너레이터를 이용하여 생성한 <code>Post</code>모델의 컨트롤러(posts_controller.rb) 클래스 파일을 살펴보면, <code>create</code>, <code>update</code>, <code>destroy</code> 액션에서 <code>flash</code>를 사용하는 것을 확인할 수 있다.</p>
+<pre><code class="lang-ruby">redirect_to ..., <span class="hljs-symbol">notice:</span> <span class="hljs-string">'Post was successfully created.'</span>
 </code></pre>
-<h4 id="rvm-">rvm 을 이용하는 방법</h4>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
-$ curl -L https://get.rvm.io | bash <span class="hljs-operator">-s</span> stable
-$ <span class="hljs-built_in">source</span> ~/.rvm/scripts/rvm
-$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"source ~/.rvm/scripts/rvm"</span> &gt;&gt; ~/.bashrc
-$ rvm install <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>
-$ rvm use <span class="hljs-number">2.1</span>.<span class="hljs-number">2</span> --default
-$ ruby -v
+<p><code>flash</code> 메시지를 할당할 때 <code>flash[:notice] = &#39;some message&#39;</code>와 같이 코드를 작성할 수 있지만, 위에서와 같이 <code>redirect_to</code> 메소드를 사용할 때는 해시형태의 옵션으로 <code>flash</code> 메시지를 지정할 수도 있다.</p>
+<blockquote class="clearfix alert alert-info"><strong class="fa fa-4x fa-edit"></strong>
+<p> 루비에서 해시 키/값을 표현할 때 :notice =&gt; &quot;some message&quot;와 같이 작성할 수도 있지만 루비 1.9부터는 notice: &quot;some message&quot;와 같이 축약형으로도 지정할 수 있다.</p>
+</blockquote>
+<p>위에서 언급한 바와 같이 이 메시지는 어플리케이션 레이아웃 템플릿(<code>application.html.erb</code>)에 <code>partial</code>로 삽입하기로 한다.</p>
+<pre><code class="lang-erb">&lt;div class=&quot;container&quot;&gt;
+
+  &lt;%= render partial: &quot;shared/flash_messages&quot;, flash: flash %&gt;
+
+  &lt;%= content_for?(:posts_laytout) ? content_for(:post_laout) : yield %&gt;
+
+&lt;/div&gt;
 </code></pre>
-<p>마지막 작업은 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
+<p>그리고 <code>app/views/shared</code> 디렉토리에 <code>_flash_message.html.erb</code>라는 <code>partial</code> 템플릿 파일을 추가하고 아래와 같이 작성한다.</p>
+<pre><code class="lang-erb">&lt;% flash.each do |type, message| %&gt;
+  &lt;div class=&quot;alert &lt;%= bootstrap_class_for(type) %&gt; alert-dismissable fade in&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/button&gt;
+    &lt;%= message %&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
 </code></pre>
-<h4 id="-">소스로 직접 설치하는 방법</h4>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span>
-$ wget http://ftp.ruby-lang.org/pub/ruby/<span class="hljs-number">2.1</span>/ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>.tar.gz
-$ tar -xzvf ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>.tar.gz
-$ <span class="hljs-built_in">cd</span> ruby-<span class="hljs-number">2.1</span>.<span class="hljs-number">2</span>/
-$ ./configure
-$ make
-$ <span class="hljs-built_in">sudo</span> make install
-$ ruby -v
+<p><code>render</code> 메소드는 <code>partial</code> 템플릿을 받을 때, 옵션으로 로컬 변수들을 넘겨 수 있는데, 여기서는 <code>flash</code> 변수에 <code>flash</code> 해시를 넘겨 준다. 이 변수 <code>flash</code>는 <code>_flash_message.html.erb</code> 파일에서 바로 사용할 수 있게 된다.</p>
+<p><code>flash</code> 해시는 <code>each</code> 메소드를 이용하여 각각의 요소를 블록으로 넘겨 주어 요소의 키는 <code>type</code>, 값은 <code>message</code> 블록변수로 받아 블록 내에서 사용할 수 있다. 이 때 <code>type</code> 변수 값에 따라 CSS 클래스를 달리 지정할 수 있도록 <code>bootstrap_class_for()</code>라는 어플리케이션 헬퍼 메소드를 <code>app/helpers/application_helper.rb</code> 파일에 추가하고 아래와 같이 작성한다. 여기서 사용하는 CSS 클래스는 <a href="http://getbootstrap.com/components/#alerts" target="_blank">bootstrap 3</a>를 참고하여 지정한 것이다.</p>
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">module</span> <span class="hljs-title">ApplicationHelper</span></span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>bootstrap_class_for(flash_type)
+    <span class="hljs-keyword">case</span> flash_type
+      <span class="hljs-keyword">when</span> <span class="hljs-string">"success"</span>
+        <span class="hljs-string">"alert-success"</span>   <span class="hljs-comment"># 초록색</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">"error"</span>
+        <span class="hljs-string">"alert-danger"</span>    <span class="hljs-comment"># 빨간색</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">"alert"</span>
+        <span class="hljs-string">"alert-warning"</span>   <span class="hljs-comment"># 노랑색</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">"notice"</span>
+        <span class="hljs-string">"alert-info"</span>      <span class="hljs-comment"># 파랑색</span>
+      <span class="hljs-keyword">else</span>
+        flash_type.to_s
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">end</span>
 </code></pre>
-<p>마지막 작업은 역시 각 패키지들의 문서들을 설치하지 말라고 지정하는 것입니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">"gem: --no-ri --no-rdoc"</span> &gt; ~/.gemrc
-</code></pre>
-<h3 id="git-">Git 설정</h3>
-<p>본 가이드의 <a href="git.html"><code>Git 설치하기</code></a> 참조</p>
-<h3 id="rails-">Rails 설치</h3>
-<p>Rails는 상당히 많은 프로그램에 의존하기 때문에 NodeJS와 같은 Javascript runtime을 설치해야 합니다. 이는 Rails에서 Coffeescript와 the Asset Pipeline을 사용할 수 있도록 해주고, javascript를 최소화해 더 빠른 제작환경을 만들어줍니다.</p>
-<p>NodeJS를 설치하기 위해서는 PPA repository를 추가해야 합니다.</p>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">sudo</span> add-apt-repository ppa:chris-lea/node.js
-$ <span class="hljs-built_in">sudo</span> apt-get update
-$ <span class="hljs-built_in">sudo</span> apt-get install nodejs
-</code></pre>
-<p>그리고 rails를 설치합니다.</p>
-<pre><code class="lang-bash">$ gem install rails
-</code></pre>
-<p>rbenv를 사용하고 있다면 rails를 사용하기 위해서는 다음의 명령어를 실행해야 합니다.</p>
-<pre><code class="lang-bash">$ rbenv rehash
-</code></pre>
-<p>rails가 제대로 설치되었다면 rails -v 명령어로 버전을 확인하면 제대로 설치되었는지 알 수 있습니다.</p>
-<pre><code class="lang-bash">$ rails -v
-<span class="hljs-comment"># Rails 4.1.1</span>
-</code></pre>
-<p>만일 다른 결과가 나온다면, 설치가 제대로 되지 않았다는 의미입니다.</p>
+<p>이제 새로운 게시물을 작성하거나 수정하면 페이지 상단의 메뉴 아래에 적절한 메시지가 표시될 것이다. 당연한 것이지만, 이 메시지를 페이지를 다시 로딩하면 사라질 것이다.</p>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/2014-05-18_16-17-06_zps5a67bce4.png" alt=""></p>
+<p>지금까지 레일스의 <code>flash</code> 메시지를 표시하는 방법을 소개했다.</p>
 
                     
                     </section>
@@ -609,10 +601,10 @@ $ <span class="hljs-built_in">sudo</span> apt-get install nodejs
         </div>
 
         
-        <a href="../../contents/rails/mac_install.html" class="navigation navigation-prev "><i class="fa fa-angle-left"></i></a>
+        <a href="../../contents/walkthrough/gallery_layout.html" class="navigation navigation-prev "><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../contents/walkthrough/start.html" class="navigation navigation-next "><i class="fa fa-angle-right"></i></a>
+        <a href="../../deployment/first.html" class="navigation navigation-next "><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
