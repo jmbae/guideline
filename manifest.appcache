@@ -1,11 +1,12 @@
 CACHE MANIFEST
-# Revision 1400399905824
+# Revision 1400413093825
 
 CACHE:
 appendices/active_record.html
 appendices/appendix.html
-appendices/books.html
 appendices/blogs.html
+appendices/books.html
+appendices/collaboration.html
 appendices/imagemagick.html
 appendices/screencasts.html
 index.html
@@ -75,9 +76,9 @@ gitbook/print.css
 gitbook/style.css
 gitbook/plugins/gitbook-plugin-disqus/plugin.js
 gitbook/plugins/gitbook-plugin-ga/plugin.js
+gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-richquotes/plugin.css
-gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 
 NETWORK:
 *
