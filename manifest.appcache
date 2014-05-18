@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1400399596792
+# Revision 1400399781576
 
 CACHE:
 appendices/active_record.html
@@ -20,21 +20,21 @@ contents/rails/linux_install.html
 contents/rails/mac_install.html
 contents/rails/using_installer.html
 contents/rbenv.html
-contents/rvm.html
 contents/rubyonrails_intro.html
+contents/rvm.html
 contents/walkthrough/model_association.html
+contents/walkthrough/bulletin.html
 contents/walkthrough/first_model.html
 contents/walkthrough/flash_message.html
-contents/walkthrough/gemfile.html
-contents/walkthrough/bulletin.html
 contents/walkthrough/gallery_layout.html
+contents/walkthrough/gemfile.html
 contents/walkthrough/layout.html
 contents/walkthrough/bulletin_type.html
 contents/walkthrough/posts_CRUD.html
 contents/walkthrough/posts_controller_modified.html
 contents/walkthrough/posts_view_file.html
-contents/walkthrough/start.html
 contents/walkthrough/top_menu.html
+contents/walkthrough/start.html
 contents/walkthrough/welcome_controller.html
 deployment/first.html
 gitbook/app.js
