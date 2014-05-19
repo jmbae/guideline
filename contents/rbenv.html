@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.2" data-basepath=".." data-revision="1400463288045">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.2" data-basepath=".." data-revision="1400537699393">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -544,28 +544,28 @@
 <p>맥에서는 <a href="http://brew.sh/" target="_blank">Homebrew</a> 패키지 매니저를 이용하면 <code>rbenv</code>과 <code>ruby-build</code>를 쉽게 설치할 수 있다.</p>
 <p>Homebrew는 한줄의 명령어로 설치 가능한데 해당 명령어는 계속 변경되기 때문에 문서에 언급하지 않는다. <a href="http://brew.sh" target="_blank">http://brew.sh</a> 하단의 Install Homebrew를 참고.</p>
 <p>Homebrew를 이용한 <code>rbenv</code>, <code>ruby-build</code> 설치 방법</p>
-<pre><code class="lang-sh">$ brew update
+<pre><code class="lang-bash">$ brew update
 $ brew install rbenv ruby-build
 </code></pre>
 <h2 id="-">리눅스</h2>
 <p>리눅스 환경에서 루비의 버전 관리를 도와주는 <code>rbenv</code>를 설치해보자. 먼저 우분투를 비롯한 데비안 기반 리눅스에서 <code>rbenv</code>를 설치하는 방법을 소개한다.</p>
 <p><a href="https://github.com" target="_blank"><code>github</code></a>에서 <code>rbenv</code>를 받아온다. git 명령으로 <code>github</code>의 <code>rbenv</code> 프로젝트를 [사용자 홈 디렉토리]/.rbenv에 클론한다.</p>
-<pre><code class="lang-sh">$ git clone git://github.com/sstephenson/rbenv.git .rbenv
+<pre><code class="lang-bash">$ git clone git://github.com/sstephenson/rbenv.git .rbenv
 </code></pre>
 <p>명령 프롬프트에서 <code>rbenv</code>를 실행할 수 있게 쉘 환경변수를 수정한다. .bashrc 파일을 읽어들일 수 있도록 편집기를 열어서 .bash_profile에 다음과 같이 추가한다.</p>
-<pre><code class="lang-sh">[ -f &quot;$HOME/.profile&quot; ] &amp;&amp; source &quot;$HOME/.profile&quot;
-[ -f &quot;$HOME/.bashrc&quot; ] &amp;&amp; source &quot;$HOME/.bashrc&quot;
+<pre><code class="lang-bash">[ <span class="hljs-operator">-f</span> <span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.profile"</span> ] &amp;&amp; <span class="hljs-built_in">source</span> <span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.profile"</span>
+[ <span class="hljs-operator">-f</span> <span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.bashrc"</span> ] &amp;&amp; <span class="hljs-built_in">source</span> <span class="hljs-string">"<span class="hljs-variable">$HOME</span>/.bashrc"</span>
 </code></pre>
 <p>.bashrc 내용은 다음과 같이 작성한다. <code>rbenv</code>가 저장된 디렉토리를 RBENV_ROOT 환경 변수에, <code>rbenv</code> 실행 파일이 들어 있는 디렉토리를 PATH에 추가한다. 쉘을 실행할때마다 &#39;rbenv init -&#39; 명령을 실행한다.</p>
-<pre><code class="lang-sh">export RBENV_ROOT=&quot;${HOME}/.rbenv&quot;
-if [ -d &quot;${RBENV_ROOT}&quot; ]; then
-  export PATH=&quot;${RBENV_ROOT}/bin:${PATH}&quot;
-  eval &quot;$(rbenv init -)&quot;
-fi
+<pre><code class="lang-bash"><span class="hljs-keyword">export</span> RBENV_ROOT=<span class="hljs-string">"<span class="hljs-variable">${HOME}</span>/.rbenv"</span>
+<span class="hljs-keyword">if</span> [ <span class="hljs-operator">-d</span> <span class="hljs-string">"<span class="hljs-variable">${RBENV_ROOT}</span>"</span> ]; <span class="hljs-keyword">then</span>
+  <span class="hljs-keyword">export</span> PATH=<span class="hljs-string">"<span class="hljs-variable">${RBENV_ROOT}</span>/bin:<span class="hljs-variable">${PATH}</span>"</span>
+  <span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-variable">$(rbenv init -)</span>"</span>
+<span class="hljs-keyword">fi</span>
 </code></pre>
 <p>루비를 설치하기 위해서는 <code>rbenv</code>의 플러그인 <code>ruby-build</code>가 필요하다. .rbenv/plugins 디렉토리를 생성하고 <code>github</code>에서 <code>ruby-build</code>를 받아온다.</p>
-<pre><code class="lang-sh">$ mkdir -p ~/.rbenv/plugins
-$ cd ~/.rbenv/plugins
+<pre><code class="lang-bash">$ mkdir -p ~/.rbenv/plugins
+$ <span class="hljs-built_in">cd</span> ~/.rbenv/plugins
 $ git clone git://github.com/sstephenson/ruby-build.git
 </code></pre>
 <p>install 옵션을 사용해서 루비를 설치해보자. 2.0.0-p451 버전을 설치했다.</p>
