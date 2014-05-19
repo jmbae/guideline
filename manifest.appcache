@@ -1,10 +1,10 @@
 CACHE MANIFEST
-# Revision 1400458387535
+# Revision 1400460061926
 
 CACHE:
 appendices/active_record.html
-appendices/blogs.html
 appendices/appendix.html
+appendices/blogs.html
 appendices/books.html
 appendices/collaboration.html
 appendices/imagemagick.html
@@ -25,8 +25,8 @@ contents/rubyonrails_intro.html
 contents/rvm.html
 contents/walkthrough/model_association.html
 contents/walkthrough/bulletin.html
-contents/walkthrough/flash_message.html
 contents/walkthrough/first_model.html
+contents/walkthrough/flash_message.html
 contents/walkthrough/gallery_layout.html
 contents/walkthrough/gemfile.html
 contents/walkthrough/layout.html
@@ -75,9 +75,9 @@ gitbook/jsrepl/sandbox.js
 gitbook/print.css
 gitbook/style.css
 gitbook/plugins/gitbook-plugin-disqus/plugin.js
+gitbook/plugins/gitbook-plugin-ga/plugin.js
 gitbook/plugins/gitbook-plugin-mathjax/plugin.js
 gitbook/plugins/gitbook-plugin-richquotes/plugin.css
-gitbook/plugins/gitbook-plugin-ga/plugin.js
 gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 
 NETWORK:

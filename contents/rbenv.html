@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.2" data-basepath=".." data-revision="1400458387535">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="3.2" data-basepath=".." data-revision="1400460061926">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -541,7 +541,7 @@
 <p><a href="http://rubyonrails.org/download" target="_blank">레일스 공식웹사이트</a>에서는 <code>rbenv</code>을 이용하여 루비를 설치할 것을 권고하고 있다. 그러나 이와 비슷한 것으로 <a href="rvm.html"><code>rvm</code></a>이란 것도 있다.  어떤 것을 사용할 것인가 망설일 필요가 없다. <code>rbenv</code>을 권하는 더 자세한 이유를 알고 싶다면 <a href="https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F" target="_blank">Why choose rbenv over RVM?</a>을 참고하기 바란다.</p>
 <p><a href="https://github.com/sstephenson/rbenv" target="_blank"><code>rbenv</code></a>을 이용하면 어플리케이션 별로 각기 다른 루비 버전을 쉽게 사용할 수 있고 새 버전이 릴리스될 때도 쉽게 업데이트할 수 있다. 아래에 운영시스템별로 설치법을 정리했다.</p>
 <h2 id="-os-x">맥 OS X</h2>
-<p>맥에서는 <a href="http://brew.sh/" target="_blank">Homebrew</a> 패키지 매니저를 이용하면 <code>rbenv</code>과 <code>ruby-build</code>를 쉽게 설치할 수 있다.</p>
+<p>맥에서는 <a href="http://brew.sh/" target="_blank">Homebrew</a> 패키지 매니저를 이용하면 <code>rbenv</code>과 <code>ruby-build</code>를 쉽게 설치할 수 있다.</p>
 <p>Homebrew는 한줄의 명령어로 설치 가능한데 해당 명령어는 계속 변경되기 때문에 문서에 언급하지 않는다. <a href="http://brew.sh" target="_blank">http://brew.sh</a> 하단의 Install Homebrew를 참고.</p>
 <p>Homebrew를 이용한 <code>rbenv</code>, <code>ruby-build</code> 설치 방법</p>
 <pre><code class="lang-sh">$ brew update
@@ -586,7 +586,10 @@ ruby 2.0.0p451 (2014-02-24 revision 45167) [x86_64-linux]
 $ rbenv rehash
 </code></pre>
 <h2 id="-">윈도우</h2>
-<p>(누구라도 작성할 수 있음)</p>
+<p>윈도우에서는 <code>rbenv</code>을 사용할 수 없다. 관련 문서에 의하면, 대신에 <a href="http://misheska.com/blog/2013/06/15/using-rbenv-to-manage-multiple-versions-of-ruby/" target="_blank">RubyInstaller</a> 또는 <a href="https://github.com/vertiginous/pik" target="_blank">Pik</a>를 사용할 것을 권한다.</p>
+<blockquote class="clearfix alert alert-info"><strong class="fa fa-4x fa-edit"></strong>
+<p> <a href="http://misheska.com/blog/2013/06/15/using-rbenv-to-manage-multiple-versions-of-ruby/" target="_blank">Mischa Taylor&#39;s Coding Blog</a> : Rbenv is supported on Linux and Mac OS X. Rbenv doesn’t work on Windows (and isn’t really necessary on Windows as there is no system Ruby on Windows). On Windows, the RubyInstaller and/or Pik are both good alternatives to work with multiple versions of Ruby on the same box.</p>
+</blockquote>
 
                     
                     </section>
