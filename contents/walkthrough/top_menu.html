@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.8" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.8" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -543,23 +543,27 @@
 <p>우선 <code>공지사항</code> 게시판에 글을 작성하는 작업을 해 보기로 한다.</p>
 <p><code>http://localhost:3000/bulletins/공지사항</code>과 같이 <code>id</code> 대신에 게시판 이름으로 해당 게시판을 불러오도록 해 보자.</p>
 <p>이를 위해서 <code>Gemfile</code>에 <code>friendly_id</code> 젬을 추가하고,</p>
-<pre><code>gem &#39;friendly_id&#39;, &#39;~&gt; 5.0.0&#39;
-</code></pre><p>설치한다.</p>
-<pre><code>$ bin/bundle install
-</code></pre><p>그리고 <code>Bulletin</code> 모델 클래스 파일(<code>app/models/bulletin.rb</code>)을 아래와 같이 변경한다.</p>
-<pre><code>class Bulletin &lt; ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :title
+<pre><code class="lang-ruby">gem <span class="hljs-string">'friendly_id'</span>, <span class="hljs-string">'~&gt; 5.0.0'</span>
+</code></pre>
+<p>설치한다.</p>
+<pre><code class="lang-bash">$ bin/bundle install
+</code></pre>
+<p>그리고 <code>Bulletin</code> 모델 클래스 파일(<code>app/models/bulletin.rb</code>)을 아래와 같이 변경한다.</p>
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bulletin</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">ActiveRecord::Base</span></span></span>
+  extend <span class="hljs-constant">FriendlyId</span>
+  friendly_id <span class="hljs-symbol">:title</span>
 
-  has_many :posts, dependent: :destroy
-end
-</code></pre><p>여기서는 <code>id</code> 대신에 <code>title</code> 속성을 이용해서 게시판을 불러오기 우해서 <code>friendly_id :title</code>와 같이 설정한다.</p>
+  has_many <span class="hljs-symbol">:posts</span>, <span class="hljs-symbol">dependent:</span> <span class="hljs-symbol">:destroy</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>여기서는 <code>id</code> 대신에 <code>title</code> 속성을 이용해서 게시판을 불러오기 우해서 <code>friendly_id :title</code>와 같이 설정한다.</p>
 <p>추가로, <code>app/controllers/bulletins_controller.rb</code> 파일에서 아래와 같이 수정한다. (<code>friendly</code>를 추가한다)</p>
-<pre><code>private
-    def set_bulletin
-      @bulletin = Bulletin.friendly.find(params[:id])
-    end
-</code></pre><p>이제, 로컬 서버를 다시 시작하면, 아래의 브라우저 화면에서 <code>http://localhost:3000/bulletins/공지사항</code>을 확인할 수 있다.</p>
+<pre><code class="lang-ruby">private
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>set_bulletin
+      <span class="hljs-variable">@bulletin</span> = <span class="hljs-constant">Bulletin</span>.friendly.find(params[<span class="hljs-symbol">:id</span>])
+    <span class="hljs-keyword">end</span>
+</code></pre>
+<p>이제, 로컬 서버를 다시 시작하면, 아래의 브라우저 화면에서 <code>http://localhost:3000/bulletins/공지사항</code>을 확인할 수 있다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_10-34-25_zps25373419.png" alt=""></p>
 
                     

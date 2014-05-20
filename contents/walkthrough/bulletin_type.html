@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.11" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.11" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -546,72 +546,80 @@
 </ul>
 <h2 id="bulletin-post_type-">Bulletin 모델에 post_type 속성 추가하기</h2>
 <p>게시판을 새로 추가할 때, 레이아웃를 지정하기 위해서 <code>post_type</code>이라는 속성을 추가하기로 한다. 이 속성은 <code>string</code> 속성을 가지는 것으로 하고, <code>bulletin</code>, <code>blog</code>, <code>gallery</code> 값을 가질 수 있다. 이를 위해서 <code>Bulletin</code> 모델에 속성을 추가하는 마이그레이션 파일을 생성한다.</p>
-<pre><code>$ bin/rails g migration add_post_type_to_bulletins post_type
+<pre><code class="lang-bash">$ bin/rails g migration add_post_<span class="hljs-built_in">type</span>_to_bulletins post_<span class="hljs-built_in">type</span>
       invoke  active_record
-      create    db/migrate/20140513063455_add_post_type_to_bulletins.rb
-</code></pre><p>그리고 방금 전에 생성된 마이그레이션 파일을 열어 아래와 같이 <code>post_type</code>의 디폴트 값을 <code>bulletin</code>으로 추가하고,</p>
-<pre><code>class AddPostTypeToBulletins &lt; ActiveRecord::Migration
-  def change
-    add_column :bulletins, :post_type, :string, default: &#39;bulletin&#39;
-  end
-end
-</code></pre><p>저장한 후 <code>db:migrate</code> 작업을 한다.</p>
-<pre><code>$ bin/rake db:migrate
-== 20140513063455 AddPostTypeToBulletins: migrating ===========================
--- add_column(:bulletins, :post_type, :string, {:default=&gt;&quot;bulletin&quot;})
-   -&gt; 0.0037s
-== 20140513063455 AddPostTypeToBulletins: migrated (0.0038s) ==================
-</code></pre><h2 id="strong-parameter-">Strong Parameter 추가하기</h2>
+      create    db/migrate/<span class="hljs-number">20140513063455</span>_add_post_<span class="hljs-built_in">type</span>_to_bulletins.rb
+</code></pre>
+<p>그리고 방금 전에 생성된 마이그레이션 파일을 열어 아래와 같이 <code>post_type</code>의 디폴트 값을 <code>bulletin</code>으로 추가하고,</p>
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddPostTypeToBulletins</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">ActiveRecord::Migration</span></span></span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>change
+    add_column <span class="hljs-symbol">:bulletins</span>, <span class="hljs-symbol">:post_type</span>, <span class="hljs-symbol">:string</span>, <span class="hljs-function">default: </span><span class="hljs-string">'bulletin'</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>저장한 후 <code>db:migrate</code> 작업을 한다.</p>
+<pre><code class="lang-bash">$ bin/rake db:migrate
+== <span class="hljs-number">20140513063455</span> AddPostTypeToBulletins: migrating ===========================
+-- add_column(:bulletins, :post_<span class="hljs-built_in">type</span>, :string, {:default=&gt;<span class="hljs-string">"bulletin"</span>})
+   -&gt; <span class="hljs-number">0.0037</span>s
+== <span class="hljs-number">20140513063455</span> AddPostTypeToBulletins: migrated (<span class="hljs-number">0.0038</span>s) ==================
+</code></pre>
+<h2 id="strong-parameter-">Strong Parameter 추가하기</h2>
 <p><code>bulletins_controller.rb</code> 파일의 열어 하단에 있는 <code>bulletin_params</code> 메소드에 아래와 같이 <code>post_type</code> 속성을 추가한다.</p>
-<pre><code>def bulletin_params
-  params.require(:bulletin).permit(:title, :description, :post_type)
-end
-</code></pre><h2 id="bulletin-">Bulletin 뷰 템플릿 파일의 변경</h2>
+<pre><code class="lang-ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> </span>bulletin_params
+  params.<span class="hljs-keyword">require</span>(<span class="hljs-symbol">:bulletin</span>).permit(<span class="hljs-symbol">:title</span>, <span class="hljs-symbol">:description</span>, <span class="hljs-symbol">:post_type</span>)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 id="bulletin-">Bulletin 뷰 템플릿 파일의 변경</h2>
 <p><code>app/views/bulletins/_form.html.erb</code> 파일을 열어 아래의 코드를 추가해 준다.</p>
-<pre><code>&lt;div class=&quot;form-group&quot;&gt;
-  &lt;%= f.input :post_type, collection: [ [&#39;게시판&#39;, &#39;bulletin&#39;], [&#39;블로그&#39;, &#39;blog&#39;]], input_html:{ class:&#39;form-control&#39;} %&gt;
-&lt;/div&gt;
-</code></pre><p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_17-52-00_zps4b0eb3c6.png" alt=""></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"form-group"</span>&gt;</span>
+  <span class="vbscript">&lt;%= f.input :post_type, collection: [ [<span class="hljs-comment">'게시판', 'bulletin'], ['블로그', 'blog']], input_html:{ class:'form-control'} %&gt;</span></span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_17-52-00_zps4b0eb3c6.png" alt=""></p>
 <p><code>app/views/bulletins/show.html.erb</code> 파일을 열어 아래의 코드를 추가해 준다.</p>
-<pre><code>&lt;tr&gt;
-  &lt;th&gt;Post Type&lt;/th&gt;
-  &lt;td&gt;&lt;%= @bulletin.post_type %&gt;&lt;/td&gt;
-&lt;/tr&gt;
-</code></pre><p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_17-55-07_zps869b50c5.png" alt=""></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Post Type<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span><span class="vbscript">&lt;%= @bulletin.post_type %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+</code></pre>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_17-55-07_zps869b50c5.png" alt=""></p>
 <p>이렇게 해서 <code>Bulletin</code> 모델에서 추가할 작업을 완료되었다.</p>
 <p>게시판의 형태에 따른 뷰를 보이도록 하기 위해서는 <code>app/views/posts/</code> 디렉토리에 <code>post_types</code> 디렉토리를 만들고 이 디렉토리에 <code>_bulletin.html.erb</code> 파일과 <code>_blog.html.erb</code>, <code>_gallery_html.erb</code> 파일을 생성한다.</p>
 <p>이제 <code>posts</code> 컨트롤러의 <code>index</code> 액션 뷰 파일의 모든 내용을 <code>_bulletin.html.erb</code> 파일로 옮기고, <code>index</code> 뷰 파일은 아래와 같이 수정하자.</p>
-<pre><code>&lt;%= render &quot;posts/post_types/#{@bulletin.post_type}&quot; %&gt;
-</code></pre><p><code>render</code> 메소드는 <code>partial</code> 템플릿 파일을 인수로 받아 렌더링 결과를 삽입해 준다. 루비에서는 이중 인용부호내의 <code>#{expression}</code>는 표현식의 결과로 대체해 준다. 따라서 <code>@bulletin.post_type</code> 값이 <code>&#39;bulletin&#39;</code>일 경우 <code>&quot;posts/post_types/bulletin&quot;</code>로 평가되어 <code>app/views/posts/post_types/</code> 디렉토리의 <code>_bulletin.html.erb</code>이라는 <code>partial</code> 템플릿 파일을 <code>render</code> 메소드가 처리하게 된다.</p>
+<pre><code class="lang-ruby">&lt;%= render <span class="hljs-string">"posts/post_types/<span class="hljs-subst">#{<span class="hljs-variable">@bulletin</span>.post_type}</span>"</span> %&gt;
+</code></pre>
+<p><code>render</code> 메소드는 <code>partial</code> 템플릿 파일을 인수로 받아 렌더링 결과를 삽입해 준다. 루비에서는 이중 인용부호내의 <code>#{expression}</code>는 표현식의 결과로 대체해 준다. 따라서 <code>@bulletin.post_type</code> 값이 <code>&#39;bulletin&#39;</code>일 경우 <code>&quot;posts/post_types/bulletin&quot;</code>로 평가되어 <code>app/views/posts/post_types/</code> 디렉토리의 <code>_bulletin.html.erb</code>이라는 <code>partial</code> 템플릿 파일을 <code>render</code> 메소드가 처리하게 된다.</p>
 <p>[주의사항]</p>
 <blockquote>
 <p><code>partial</code> 템플릿 파일에서는 부모 템플릿 파일에서 사용하는 모든 인스턴스 변수를 그대로 사용할 수 있다.</p>
 </blockquote>
 <p><code>_blog.html.erb</code> 파일의 내용을 아래와 같이 작성한다.</p>
-<pre><code>&lt;h2&gt;&lt;%= params[:bulletin_id] %&gt;&lt;/h2&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span><span class="vbscript">&lt;%= params[:bulletin_id] %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
 
-&lt;% @posts.each do | post | %&gt;
-    &lt;div class=&#39;post&#39;&gt;
-      &lt;div class=&#39;title&#39;&gt;&lt;%= post.title %&gt;&lt;/div&gt;
-      &lt;div class=&#39;content&#39;&gt;&lt;%= simple_format post.content %&gt;&lt;/div&gt;
-      &lt;div&gt;
-          &lt;%= link_to &#39;Show&#39;, [post.bulletin, post], class:&#39;btn btn-default&#39; %&gt;
-          &lt;%= link_to &#39;Edit&#39;, edit_bulletin_post_path(post.bulletin, post), class:&#39;btn btn-default&#39; %&gt;
-          &lt;%= link_to &#39;Destroy&#39;, [post.bulletin, post], method: :delete, data: { confirm: &#39;Are you sure?&#39; }, class:&#39;btn btn-default&#39; %&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-&lt;% end %&gt;
+<span class="vbscript">&lt;% @posts.<span class="hljs-keyword">each</span> <span class="hljs-keyword">do</span> | post | %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'post'</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'title'</span>&gt;</span><span class="vbscript">&lt;%= post.title %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">'content'</span>&gt;</span><span class="vbscript">&lt;%= simple_format post.content %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+          <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Show', [post.bulletin, post], class:'btn btn-default' %&gt;</span></span>
+          <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %&gt;</span></span>
+          <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %&gt;</span></span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="vbscript">&lt;% <span class="hljs-keyword">end</span> %&gt;</span>
 
-&lt;br&gt;
+<span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
 
-&lt;%= link_to &#39;New Post&#39;, new_bulletin_post_path, class: &#39;btn btn-default&#39; %&gt;
-</code></pre><p>이제 <code>가입인사</code> 게시판의 종류를 <code>블로그</code>로 변경한 후,</p>
+<span class="vbscript">&lt;%= link_to <span class="hljs-comment">'New Post', new_bulletin_post_path, class: 'btn btn-default' %&gt;</span></span>
+</code></pre>
+<p>이제 <code>가입인사</code> 게시판의 종류를 <code>블로그</code>로 변경한 후,</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_18-24-22_zpsd9dcab9f.png" alt=""></p>
 <p>브라우저에서 상단 메뉴 중 <code>가입인사</code>를 클릭해서 보면 아래와 같이 변경되어 보이게 된다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-13_18-27-05_zps11cfa325.png" alt=""></p>
 <p>위와 같이 보이게 하기 위해서의 약간의 작업을 추가로 해 주어야 한다.
 우선 <code>CSS</code> 클래스 <code>post</code>, <code>title</code>, <code>content</code>를 <code>app/assets/stylesheets/posts.css.scss</code> 파일에 작성해 준다.</p>
-<pre><code>@import &#39;bootstrap/variables&#39;;
+<pre><code class="lang-css">@import &#39;bootstrap/variables&#39;;
 
 .post {
   border: 1px solid $gray-light;
@@ -624,12 +632,14 @@ end
     margin-bottom:.5em;
   }
 }
-</code></pre><p>그리고, <code>app/assets/stylesheets/</code> 디렉토리에 잇는 <code>application.css.scss</code> 파일을 <code>bootstrap_init.css.scss</code>로 변경하고, <code>application.css</code> 파일을 새로 추가한 후 아래와 같이 작성한다.</p>
-<pre><code>/*
+</code></pre>
+<p>그리고, <code>app/assets/stylesheets/</code> 디렉토리에 잇는 <code>application.css.scss</code> 파일을 <code>bootstrap_init.css.scss</code>로 변경하고, <code>application.css</code> 파일을 새로 추가한 후 아래와 같이 작성한다.</p>
+<pre><code class="lang-ruby">/*
 *= require_self
 *= require_tree .
-*/
+*<span class="hljs-regexp">/</span>
 </code></pre>
+
                     
                     </section>
                 

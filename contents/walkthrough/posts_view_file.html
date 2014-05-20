@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.10" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.10" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -539,25 +539,27 @@
                     
                         <h1 id="posts-">posts 뷰 변경</h1>
 <p><code>index</code> 액션의 뷰 파일 중 인스턴스 변수(<code>@posts</code>)를 사용하는 부분만 집중해서 보자.</p>
-<pre><code>&lt;% @posts.each do |post| %&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;%= post.title %&gt;&lt;/td&gt;
-    &lt;td&gt;
-      &lt;%= link_to &#39;Show&#39;, [post.bulletin, post], class:&#39;btn btn-default&#39; %&gt;
-      &lt;%= link_to &#39;Edit&#39;, edit_bulletin_post_path(post.bulletin, post), class:&#39;btn btn-default&#39; %&gt;
-      &lt;%= link_to &#39;Destroy&#39;, [post.bulletin, post], method: :delete, data: { confirm: &#39;Are you sure?&#39; }, class:&#39;btn btn-default&#39; %&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;% end %&gt;
-</code></pre><p><code>@posts</code> 인스턴스 변수는 배열을 가진다. 루비의 배열 메소드인 <code>each</code>는 리시버(<code>.each</code> 앞에 있는 객체)의 각 요소를 하나씩 반복해서 <code>do</code> 블록 변수(여기서는 <code>post</code>)로 넘겨 준다. 따라서 <code>&lt;%= post.title %&gt;</code>는 <code>post</code> 객체의 <code>title</code> 속성값이 삽입된다.</p>
+<pre><code class="lang-html"><span class="vbscript">&lt;% @posts.<span class="hljs-keyword">each</span> <span class="hljs-keyword">do</span> |post| %&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span><span class="vbscript">&lt;%= post.title %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Show', [post.bulletin, post], class:'btn btn-default' %&gt;</span></span>
+      <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Edit', edit_bulletin_post_path(post.bulletin, post), class:'btn btn-default' %&gt;</span></span>
+      <span class="vbscript">&lt;%= link_to <span class="hljs-comment">'Destroy', [post.bulletin, post], method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default' %&gt;</span></span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+<span class="vbscript">&lt;% <span class="hljs-keyword">end</span> %&gt;</span>
+</code></pre>
+<p><code>@posts</code> 인스턴스 변수는 배열을 가진다. 루비의 배열 메소드인 <code>each</code>는 리시버(<code>.each</code> 앞에 있는 객체)의 각 요소를 하나씩 반복해서 <code>do</code> 블록 변수(여기서는 <code>post</code>)로 넘겨 준다. 따라서 <code>&lt;%= post.title %&gt;</code>는 <code>post</code> 객체의 <code>title</code> 속성값이 삽입된다.</p>
 <h2 id="navbar-">navbar 메뉴변경</h2>
 <p><code>app/views/layouts/application.html.erb</code> 파일에서 아래와 같이 <code>&lt;ul class=&#39;nav navbar-nav&#39;&gt;</code> 부분을 아래와 같이 변경한다.</p>
-<pre><code>&lt;ul class=&quot;nav navbar-nav&quot;&gt;
-  &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;공지사항&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;공지사항&#39;, bulletin_posts_path(&#39;공지사항&#39;) %&gt;&lt;/li&gt;
-  &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;새소식&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;새소식&#39;, bulletin_posts_path(&#39;새소식&#39;) %&gt;&lt;/li&gt;
-  &lt;li class=&quot;&lt;%= params[:bulletin_id] == &#39;가입인사&#39; ? &#39;active&#39; : &#39;&#39; %&gt;&quot;&gt;&lt;%= link_to &#39;가입인사&#39;, bulletin_posts_path(&#39;가입인사&#39;) %&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre><p>이제 상단 메뉴 항목를 클릭하면 해당 게시판으로 이동하고 해당 항목이 주황색의 글씨로 표시된다.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"nav navbar-nav"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"&lt;%= params[:bulletin_id] == '공지사항' ? 'active' : '' %&gt;"</span>&gt;</span><span class="vbscript">&lt;%= link_to <span class="hljs-comment">'공지사항', bulletin_posts_path('공지사항') %&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"&lt;%= params[:bulletin_id] == '새소식' ? 'active' : '' %&gt;"</span>&gt;</span><span class="vbscript">&lt;%= link_to <span class="hljs-comment">'새소식', bulletin_posts_path('새소식') %&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"&lt;%= params[:bulletin_id] == '가입인사' ? 'active' : '' %&gt;"</span>&gt;</span><span class="vbscript">&lt;%= link_to <span class="hljs-comment">'가입인사', bulletin_posts_path('가입인사') %&gt;</span></span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<p>이제 상단 메뉴 항목를 클릭하면 해당 게시판으로 이동하고 해당 항목이 주황색의 글씨로 표시된다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_11-19-28_zps89cc799c.png" alt=""></p>
 
                     

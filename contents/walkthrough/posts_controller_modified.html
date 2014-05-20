@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.9" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.9" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -572,11 +572,12 @@ edit_bulletin_post GET    /bulletins/:bulletin_id/posts/:id/edit(.:format) posts
 </code></pre>
 <p>위와 같은 라우팅 테이블에서 <code>URI Pattern</code>을 주목하자. 외부로부터 들어오는 요청이 이 테이블의 <code>URI Pattern</code>과 일치할 경우 매핑되는 컨트롤러의 액션이 호출된다. 이 때 <code>URI Pattern</code> 중 심볼에 매칭되는 부분은 <code>params[]</code> 해쉬의 키로 사용되어 해당 파라미터의 값을 불러올 수 있게 된다. 위의 예에서는 <code>params[:bulletin_id]</code> 키에 해당하는 파라미터 값을 불러와 액션에서 사용할 수 있게 된다.</p>
 <p>특정 게시판의 게시물 목록을 불러오는 예를 들어 보자.</p>
-<pre><code>Prefix : bulletin_posts
+<pre><code class="lang-bash">Prefix : bulletin_posts
 Verb : GET
 URI Pattern : /bulletins/:bulletin_id/posts(.:format)
-Controller#Action : posts#index
-</code></pre><p><code>Prefix</code> 끝에 <code>_path</code> 또는 <code>_url</code>을 붙여 헬퍼메소드로 사용할 수 있는데, 뷰 템플릿에서 동적 URL을 사용할 수 있도록 해 주어 정적 URL을 일일이 입력할 필요가 없게 된다. 즉, 뷰 템플릿 파일에서 <code>&lt;%= bulletin_posts_path(&#39;공지사항&#39;) %&gt;</code>와 같이 사용하면 뷰 파일이 렌더링될 때 <code>http://localhost:3000/bulletins/공지사항/posts</code>으로 변환된다.</p>
+Controller<span class="hljs-comment">#Action : posts#index</span>
+</code></pre>
+<p><code>Prefix</code> 끝에 <code>_path</code> 또는 <code>_url</code>을 붙여 헬퍼메소드로 사용할 수 있는데, 뷰 템플릿에서 동적 URL을 사용할 수 있도록 해 주어 정적 URL을 일일이 입력할 필요가 없게 된다. 즉, 뷰 템플릿 파일에서 <code>&lt;%= bulletin_posts_path(&#39;공지사항&#39;) %&gt;</code>와 같이 사용하면 뷰 파일이 렌더링될 때 <code>http://localhost:3000/bulletins/공지사항/posts</code>으로 변환된다.</p>
 <p>또한 이 <code>URI Pattern</code>에 매핑되는 해당 컨트롤러의 액션에서는 <code>params[:bulletin_id]</code> 해시키를 이용하여 <code>&#39;공지사항&#39;</code> 값을 얻을 수 있게 된다.</p>
 <h2 id="posts-">posts 컨트롤러의 변경</h2>
 <p><code>Controller#Action</code>의 <code>posts#index</code>는 <code>posts</code> 컨트롤러의 <code>index</code> 액션을 호출하라는 의미이다. 여기서는  <code>app/controllers/posts_controller.rb</code> 파일의 <code>index</code> 액션 코드만을 주목하자.</p>

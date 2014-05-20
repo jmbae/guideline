@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.4" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.4" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -539,90 +539,94 @@
                     
                         <h1 id="-">어플리케이션 레이아웃의 작성</h1>
 <p>프로젝트를 생성할 때 콘솔의 출력 내용에는 아래와 같은 내용을 볼 수 있었을 것이다.</p>
-<pre><code>$ rails new rcafe
+<pre><code class="lang-bash">$ rails new rcafe
 ...중략~
       create  app/views/layouts/application.html.erb
 ...중략 ~
-</code></pre><p>레일스에서는 <code>app/views/layouts/</code> 디렉토리에서 프로젝트 전용 레이아웃을 관리한다.</p>
+</code></pre>
+<p>레일스에서는 <code>app/views/layouts/</code> 디렉토리에서 프로젝트 전용 레이아웃을 관리한다.</p>
 <p>특히 <code>application.html.erb</code> 파일은 전체 어플리케이션의 레이아웃을 만들어 주는데, 그 소스코드는 아래와 같다.</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;Rcafe&lt;/title&gt;
-  &lt;%= stylesheet_link_tag    &#39;application&#39;, media: &#39;all&#39;, &#39;data-turbolinks-track&#39; =&gt; true %&gt;
-  &lt;%= javascript_include_tag &#39;application&#39;, &#39;data-turbolinks-track&#39; =&gt; true %&gt;
-  &lt;%= csrf_meta_tags %&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Rcafe<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+  <span class="vbscript">&lt;%= stylesheet_link_tag    <span class="hljs-comment">'application', media: 'all', 'data-turbolinks-track' =&gt; true %&gt;</span></span>
+  <span class="vbscript">&lt;%= javascript_include_tag <span class="hljs-comment">'application', 'data-turbolinks-track' =&gt; true %&gt;</span></span>
+  <span class="vbscript">&lt;%= csrf_meta_tags %&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
 
-&lt;%= yield %&gt;
+<span class="vbscript">&lt;%= yield %&gt;</span>
 
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p><code>.html.erb</code> 확장자로 끝나는 뷰 템플릿 파일들은 파인 내부에 <code>ERB(Embeded Ruby)</code> 코드를 포함하고 있다. 즉, HTML 파일에 루비코드를 삽입해 놓은 것이며 렌더링 과정 중에 연산 결과가 삽입된다. <code>&lt;%= %&gt;</code>와 같은 형태를 가지면 루비의 처리결과로 대체되며, <code>&lt;% %&gt;</code>와 같은 경우에는 삽입된 루비 코드를 실행만 한다.</p>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p><code>.html.erb</code> 확장자로 끝나는 뷰 템플릿 파일들은 파인 내부에 <code>ERB(Embeded Ruby)</code> 코드를 포함하고 있다. 즉, HTML 파일에 루비코드를 삽입해 놓은 것이며 렌더링 과정 중에 연산 결과가 삽입된다. <code>&lt;%= %&gt;</code>와 같은 형태를 가지면 루비의 처리결과로 대체되며, <code>&lt;% %&gt;</code>와 같은 경우에는 삽입된 루비 코드를 실행만 한다.</p>
 <p>위의 HTML 코드 중 하단에 있는 <code>&lt;%= yield %&gt;</code> 부분을 주목하자.
 우선은 각각의 액션이 실행된 후 HTML로 렌더링되는 결과가 이 부분에 삽입된다고 알아 두자. 나중에 <code>yield</code>에 대해서 자세히 다루도록 하겠다.</p>
 <p>언급한 바와 같이, 어플리케이션 레이아웃은 어플리케이션의 전체 레이아웃을 만들어 준다. 따라서 전체 어플리케이션의 페이지 모습을 일관성 있게 변경하고자 할 때 바로 이 <code>application.html.erb</code> 파일에서 작업을 해 주면 된다. <code>Bootstrap</code>의 <code>navbar</code> 메뉴를 추가하여 이 파일을 아래와 같이 수정한다.</p>
-<pre><code>&lt;body&gt;
-    &lt;!-- Fixed navbar --&gt;
-    &lt;div class=&quot;navbar navbar-default navbar-fixed-top&quot; role=&quot;navigation&quot;&gt;
-      &lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;navbar-header&quot;&gt;
-          &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot;&gt;
-            &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
-            &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-            &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-            &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-          &lt;/button&gt;
-          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Project name&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;navbar-collapse collapse&quot;&gt;
-          &lt;ul class=&quot;nav navbar-nav&quot;&gt;
-            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
-            &lt;li class=&quot;dropdown&quot;&gt;
-              &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;Dropdown &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;
-              &lt;ul class=&quot;dropdown-menu&quot;&gt;
-                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-                &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
-                &lt;li class=&quot;dropdown-header&quot;&gt;Nav header&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;One more separated link&lt;/a&gt;&lt;/li&gt;
-              &lt;/ul&gt;
-            &lt;/li&gt;
-          &lt;/ul&gt;
-          &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
-            &lt;li&gt;&lt;a href=&quot;../navbar/&quot;&gt;Default&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href=&quot;../navbar-static-top/&quot;&gt;Static top&lt;/a&gt;&lt;/li&gt;
-            &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;./&quot;&gt;Fixed top&lt;/a&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Fixed navbar --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar navbar-default navbar-fixed-top"</span> <span class="hljs-attribute">role</span>=<span class="hljs-value">"navigation"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"container"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar-header"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar-toggle"</span> <span class="hljs-attribute">data-toggle</span>=<span class="hljs-value">"collapse"</span> <span class="hljs-attribute">data-target</span>=<span class="hljs-value">".navbar-collapse"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"sr-only"</span>&gt;</span>Toggle navigation<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon-bar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon-bar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"icon-bar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar-brand"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Project name<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"navbar-collapse collapse"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"nav navbar-nav"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#about"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#contact"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"dropdown"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"dropdown-toggle"</span> <span class="hljs-attribute">data-toggle</span>=<span class="hljs-value">"dropdown"</span>&gt;</span>Dropdown <span class="hljs-tag">&lt;<span class="hljs-title">b</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"caret"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"dropdown-menu"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Action<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Another action<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Something else here<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"divider"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"dropdown-header"</span>&gt;</span>Nav header<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>Separated link<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#"</span>&gt;</span>One more separated link<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"nav navbar-nav navbar-right"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"../navbar/"</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"../navbar-static-top/"</span>&gt;</span>Static top<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"active"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"./"</span>&gt;</span>Fixed top<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><span class="hljs-comment">&lt;!--/.nav-collapse --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
-    &lt;div class=&quot;container&quot;&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"container"</span>&gt;</span>
 
-      &lt;%= yield %&gt;
+      <span class="vbscript">&lt;%= yield %&gt;</span>
 
-    &lt;/div&gt; &lt;!-- /container --&gt;
-&lt;/body&gt;
-</code></pre><p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_08-18-15_zps22c4fd56.png" alt=""></p>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span> <span class="hljs-comment">&lt;!-- /container --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+</code></pre>
+<p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_08-18-15_zps22c4fd56.png" alt=""></p>
 <p>페이지 상단 부분이 <code>navbar</code>에 가려지는 문제를 해결하기 위해서는 아래와 같이 <code>app/assets/stylesheets/application.css.scss</code> 파일을 수정한다. 하단의 <code>body { top-padding: 60px; }</code>을 추가한다.</p>
-<pre><code>$light-orange: #ff8c00;
-$navbar-default-color: $light-orange;
-$navbar-default-bg: #312312;
-$navbar-default-link-color: gray;
-$navbar-default-link-active-color: $light-orange;
-$navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: black;
+<pre><code class="lang-css">$<span class="hljs-tag">light-orange</span>: <span class="hljs-id">#ff8c00</span>;
+$<span class="hljs-tag">navbar-default-color</span>: $<span class="hljs-tag">light-orange</span>;
+$<span class="hljs-tag">navbar-default-bg</span>: <span class="hljs-id">#312312</span>;
+$<span class="hljs-tag">navbar-default-link-color</span>: <span class="hljs-tag">gray</span>;
+$<span class="hljs-tag">navbar-default-link-active-color</span>: $<span class="hljs-tag">light-orange</span>;
+$<span class="hljs-tag">navbar-default-link-hover-color</span>: <span class="hljs-tag">white</span>;
+$<span class="hljs-tag">navbar-default-link-hover-bg</span>: <span class="hljs-tag">black</span>;
 
-@import &#39;bootstrap&#39;;
+<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">'bootstrap'</span></span>;
 
-body { padding-top: 60px; }
-</code></pre><p>아제 브라우저를 다시 로딩하면 제대로 보이게 될 것이다.</p>
+<span class="hljs-tag">body</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">padding-top</span>:<span class="hljs-value"> <span class="hljs-number">60</span>px</span></span>; <span class="hljs-rule">}</span></span>
+</code></pre>
+<p>아제 브라우저를 다시 로딩하면 제대로 보이게 될 것이다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_08-25-31_zps48e2c9f3.png" alt=""></p>
 <p>브라우저의 폭을 줄이면 브라우저 상단의 navbar 메뉴가 모바일 화면에 적합하게 자동으로 축소된다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rcafe/2014-05-09_08-38-27_zpsaf2d513a.png" alt=""></p>

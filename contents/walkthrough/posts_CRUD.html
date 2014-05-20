@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.5" data-basepath="../.." data-revision="1400553586115">
+    <div class="book" data-github="RORLabGitBook/guideline" data-level="5.5" data-basepath="../.." data-revision="1400554048861">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -594,91 +594,94 @@
 <p>기존 데이터를 수정하기 위한 폼을 응답으로 보낸다.</p>
 <p><img src="http://i1373.photobucket.com/albums/ag392/rorlab/Photobucket%20Desktop%20-%20RORLAB/rails_guideline/2014-05-03_12-21-51_zps869f6832.png" alt=""></p>
 <h2 id="posts-">posts 컨트롤러</h2>
-<pre><code>class PostsController &lt; ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+<pre><code class="lang-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PostsController</span> <span class="hljs-inheritance">&lt; <span class="hljs-parent">ApplicationController</span></span></span>
+  before_action <span class="hljs-symbol">:set_post</span>, <span class="hljs-symbol">only:</span> [<span class="hljs-symbol">:show</span>, <span class="hljs-symbol">:edit</span>, <span class="hljs-symbol">:update</span>, <span class="hljs-symbol">:destroy</span>]
 
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-  end
+  <span class="hljs-comment"># GET /posts</span>
+  <span class="hljs-comment"># GET /posts.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>index
+    <span class="hljs-variable">@posts</span> = <span class="hljs-constant">Post</span>.all
+  <span class="hljs-keyword">end</span>
 
-  # GET /posts/1
-  # GET /posts/1.json
-  def show
-  end
+  <span class="hljs-comment"># GET /posts/1</span>
+  <span class="hljs-comment"># GET /posts/1.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>show
+  <span class="hljs-keyword">end</span>
 
-  # GET /posts/new
-  def new
-    @post = Post.new
-  end
+  <span class="hljs-comment"># GET /posts/new</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>new
+    <span class="hljs-variable">@post</span> = <span class="hljs-constant">Post</span>.new
+  <span class="hljs-keyword">end</span>
 
-  # GET /posts/1/edit
-  def edit
-  end
+  <span class="hljs-comment"># GET /posts/1/edit</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>edit
+  <span class="hljs-keyword">end</span>
 
-  # POST /posts
-  # POST /posts.json
-  def create
-    @post = Post.new(post_params)
+  <span class="hljs-comment"># POST /posts</span>
+  <span class="hljs-comment"># POST /posts.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>create
+    <span class="hljs-variable">@post</span> = <span class="hljs-constant">Post</span>.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: &#39;Post was successfully created.&#39; }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    respond_to <span class="hljs-keyword">do</span> |format|
+      <span class="hljs-keyword">if</span> <span class="hljs-variable">@post</span>.save
+        format.html { redirect_to <span class="hljs-variable">@post</span>, <span class="hljs-symbol">notice:</span> <span class="hljs-string">'Post was successfully created.'</span> }
+        format.json { render <span class="hljs-symbol">:show</span>, <span class="hljs-symbol">status:</span> <span class="hljs-symbol">:created</span>, <span class="hljs-symbol">location:</span> <span class="hljs-variable">@post</span> }
+      <span class="hljs-keyword">else</span>
+        format.html { render <span class="hljs-symbol">:new</span> }
+        format.json { render <span class="hljs-symbol">json:</span> <span class="hljs-variable">@post</span>.errors, <span class="hljs-symbol">status:</span> <span class="hljs-symbol">:unprocessable_entity</span> }
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
-  def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: &#39;Post was successfully updated.&#39; }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  <span class="hljs-comment"># PATCH/PUT /posts/1</span>
+  <span class="hljs-comment"># PATCH/PUT /posts/1.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>update
+    respond_to <span class="hljs-keyword">do</span> |format|
+      <span class="hljs-keyword">if</span> <span class="hljs-variable">@post</span>.update(post_params)
+        format.html { redirect_to <span class="hljs-variable">@post</span>, <span class="hljs-symbol">notice:</span> <span class="hljs-string">'Post was successfully updated.'</span> }
+        format.json { render <span class="hljs-symbol">:show</span>, <span class="hljs-symbol">status:</span> <span class="hljs-symbol">:ok</span>, <span class="hljs-symbol">location:</span> <span class="hljs-variable">@post</span> }
+      <span class="hljs-keyword">else</span>
+        format.html { render <span class="hljs-symbol">:edit</span> }
+        format.json { render <span class="hljs-symbol">json:</span> <span class="hljs-variable">@post</span>.errors, <span class="hljs-symbol">status:</span> <span class="hljs-symbol">:unprocessable_entity</span> }
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-  def destroy
-    @post.destroy
-    respond_to do |format|
+  <span class="hljs-comment"># DELETE /posts/1</span>
+  <span class="hljs-comment"># DELETE /posts/1.json</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>destroy
+    <span class="hljs-variable">@post</span>.destroy
+    respond_to <span class="hljs-keyword">do</span> |format|
       format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
-  end
+      format.json { head <span class="hljs-symbol">:no_content</span> }
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+    <span class="hljs-comment"># Use callbacks to share common setup or constraints between actions.</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>set_post
+      <span class="hljs-variable">@post</span> = <span class="hljs-constant">Post</span>.find(params[<span class="hljs-symbol">:id</span>])
+    <span class="hljs-keyword">end</span>
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :content)
-    end
-end
-</code></pre><h2 id="before_action">before_action</h2>
+    <span class="hljs-comment"># Never trust parameters from the scary internet, only allow the white list through.</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>post_params
+      params.<span class="hljs-keyword">require</span>(<span class="hljs-symbol">:post</span>).permit(<span class="hljs-symbol">:title</span>, <span class="hljs-symbol">:content</span>)
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 id="before_action">before_action</h2>
 <p>레일스 4부터 <code>_filter</code>가 <code>_action</code>으로 변경되었다.</p>
 <p>따라서 <code>before_filter</code>, <code>after_filter</code>, <code>around_filter</code>는 각각 <code>before_action</code>, <code>after_action</code>, <code>around_action</code>으로 변경되었다.</p>
 <p>컨트롤러의 상단에서 아래와 같은 <code>before_action</code> 필터를 볼 수 있다.</p>
-<pre><code>before_action :set_post, only: [:show, :edit, :update, :destroy]
-</code></pre><p>이것은 <code>posts</code> 컨트롤러의 액션 중에서 <code>show</code>, <code>edit</code>,<code>update</code>, <code>destroy</code> 액션이 실행되기 전에 반드시 <code>set_post</code> 메소드를 실행하라는 필터인 것이다. 이와 같은 필터 메소드는 해당 컨트롤러에서 <code>private</code>으로 선언되어 있다.</p>
-<pre><code>private
-  def set_post
-    @post = Post.find(params[:id])
-  end
-</code></pre><p>즉, 파라미터로 넘겨 받은 <code>id</code> 값을 이용하여 특정 post를 조회한 후 <code>@post</code> 인스턴스 변수에 할당한다.</p>
+<pre><code class="lang-ruby">before_action <span class="hljs-symbol">:set_post</span>, <span class="hljs-symbol">only:</span> [<span class="hljs-symbol">:show</span>, <span class="hljs-symbol">:edit</span>, <span class="hljs-symbol">:update</span>, <span class="hljs-symbol">:destroy</span>]
+</code></pre>
+<p>이것은 <code>posts</code> 컨트롤러의 액션 중에서 <code>show</code>, <code>edit</code>,<code>update</code>, <code>destroy</code> 액션이 실행되기 전에 반드시 <code>set_post</code> 메소드를 실행하라는 필터인 것이다. 이와 같은 필터 메소드는 해당 컨트롤러에서 <code>private</code>으로 선언되어 있다.</p>
+<pre><code class="lang-ruby">private
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>set_post
+    <span class="hljs-variable">@post</span> = <span class="hljs-constant">Post</span>.find(params[<span class="hljs-symbol">:id</span>])
+  <span class="hljs-keyword">end</span>
+</code></pre>
+<p>즉, 파라미터로 넘겨 받은 <code>id</code> 값을 이용하여 특정 post를 조회한 후 <code>@post</code> 인스턴스 변수에 할당한다.</p>
 <h2 id="strong-parameters">Strong Parameters</h2>
 <p>레일스 3에서는 mass assignment에 대한 화이트리스트를 해당 모델 클래스에서 <code>attr_accesible</code> 매크로를 작성였다.</p>
 <pre><code>class User &lt; ActiveRecord::Base
@@ -687,11 +690,12 @@ end
 </code></pre><p>즉, <code>User</code> 모델의 <code>first</code>, <code>last</code>, <code>email</code> 속성만이 <a href="http://code.tutsplus.com/tutorials/mass-assignment-rails-and-you--net-31695" target="_blank">mass assignment</a>로 저장할 수 있다는 것이다.</p>
 <p>그러나 레일스 4로 업그레이드되면서 이러한 속성 보안관련 기능이 모델로부터 컨트롤러로 이동하여 <a href="http://richonrails.com/articles/rails-4-preview-strong-parameters" target="_blank">Strong Parameters</a>의 개념으로 재구성되었다.</p>
 <p><code>posts</code> 컨트롤러 클래스 파일의 하단에는 아래와 같이 정의되어 있다.</p>
-<pre><code>private
-  def post_params
-    params.require(:post).permit(:title, :content)
-  end
-</code></pre><p>즉, 파라미터로 넘겨 받은 속성 중에 <code>title</code>과 <code>content</code>만 화이트리스트로 인정하겠다는 뜻이다. 따라서 다른 속성은 <code>save</code> 또는 <code>udpate</code> 되지 않게 된다.</p>
+<pre><code class="lang-ruby">private
+  <span class="hljs-function"><span class="hljs-keyword">def</span> </span>post_params
+    params.<span class="hljs-keyword">require</span>(<span class="hljs-symbol">:post</span>).permit(<span class="hljs-symbol">:title</span>, <span class="hljs-symbol">:content</span>)
+  <span class="hljs-keyword">end</span>
+</code></pre>
+<p>즉, 파라미터로 넘겨 받은 속성 중에 <code>title</code>과 <code>content</code>만 화이트리스트로 인정하겠다는 뜻이다. 따라서 다른 속성은 <code>save</code> 또는 <code>udpate</code> 되지 않게 된다.</p>
 
                     
                     </section>
